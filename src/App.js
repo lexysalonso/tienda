@@ -1,17 +1,14 @@
 import "./App.css";
-import Card from "./components/Card/Card";
-import Navbar from "./components/Navbar/Navbar";
+import LandingPages from "./Pages/LandingPages";
+import {BrowserRouter as Router , Routes , Route, } from "react-router-dom"
+
 function App() {
   return (
-    <>
-      <header className="App">
-        <Navbar></Navbar>
-      </header>
-      <main className="main">
-        <Card></Card>
-      </main>
-     
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPages />}></Route>
+      </Routes>
+    </Router>
   );
 }
 
