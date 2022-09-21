@@ -1,7 +1,11 @@
 import React from "react";
 import style from "./card.module.css";
 
+
+
 const Card = ({ item }) => {
+  // const isOpenMenu = true
+
   return (
     <article className={style.article}>
       <img src={item.image} alt="asdfdf" />
@@ -9,6 +13,7 @@ const Card = ({ item }) => {
         <p>Category: {item.category}</p>
         <p>Precio: {item.price} $</p>
         <p>Cantidad: {item.rating.count} </p>
+        
         <button className={style.button}>Añadir</button>
       </aside>
     </article>

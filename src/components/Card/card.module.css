@@ -34,6 +34,9 @@ img {
   color: #fff;
   
 }
+.prueba {
+   transform: scale(1.5,1.5);
+}
 .spinner{
  text-align: center;
 }

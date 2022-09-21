@@ -27,4 +27,4 @@ const GridCard = () => {
   )  
 }
 
-export default GridCard
+export default GridCard;
