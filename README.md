@@ -1,5 +1,9 @@
 # Getting Started with Create React App
 
+## Tienda creada por Lexys MAnuel
+
+## Problema con el token
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
