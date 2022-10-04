@@ -6,16 +6,48 @@
 }
 
 .navbar {
-  position: fixed;
-  top: 0;
-  padding: 0.5rem;
-  height: 3rem;
+  padding: 10px 0;
   width: 100%;
-  z-index: 999;
   background-color: rgb(109, 161, 238);
   box-shadow: var(--elevation-raised);
   line-height: 3rem;
   border: none;
+}
+.navbar__menuhamburger {
+  transform: translate(-100%, 0);
+}
+.navbar__menuright {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 25%;
+  background-color: #000;
+  z-index: 999;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 1s ease-in-out linear;
+}
+.navbar__close {
+  position: relative;
+}
+.navbar__closeimg {
+  position: absolute;
+  height: 1rem;
+  width: 1rem;
+  top: 5px;
+  right: 10px;
+  color: #fff;
+  border: none;
+  
+}
+
+.navbar__menurightul > li {
+  list-style: none;
 }
 
 .container {
@@ -29,7 +61,7 @@
   display: flex;
   justify-content: space-between;
 }
-.navbar_input{
+.navbar_input {
   padding: 15px;
   border: 0;
   border-radius: 2rem;
@@ -43,30 +75,44 @@
   height: 100%;
   width: 100%;
   margin-top: 10px;
-  
 }
+.navbar__ammout {
+  position: absolute;
+  margin: 0;
+  top: 2px;
+  width: 1rem;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 50%;
+}
+
 .navbar__menu {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  position: relative;
 }
 .navbar__button {
-  height: 2em;
+  padding: 0;
+  height: 2rem;
   width: 2rem;
   background-color: transparent;
   border: 0;
- 
+  margin-top: 5px;
 }
-.navbar__inputbutton__search{
-   width: 4rem;
-   padding: 10px;
-   text-align: center;
-   border: 0;
-   color: #fff;
-   border-radius: 4rem;
-   background-color: rgb(228, 96, 20);
-   font-size: 1rem;
-   font-weight: bold;
+.navbar__inputbutton__search {
+  width: 4rem;
+  padding: 10px;
+  text-align: center;
+  border: 0;
+  color: #fff;
+  border-radius: 4rem;
+  background-color: rgb(228, 96, 20);
+  font-size: 1rem;
+  font-weight: bold;
 }
 .navbar__menulogin {
   width: 4rem;
@@ -77,7 +123,7 @@
   border-radius: 4rem;
   background-color: rgb(228, 96, 20);
   font-size: 1rem;
-   font-weight: bold;
+  font-weight: bold;
 }
 
 .list {

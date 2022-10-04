@@ -1,5 +1,9 @@
 .container {
-  margin-left: 80px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 4rem;
+
 }
 img {
   max-width: 100%;
@@ -10,6 +14,11 @@ img {
   background-color: #fff;
   text-align: center;
   border-radius: 2rem;
+}
+.article:hover{
+  transform: translate(-20px,-15px);
+  border-bottom: thick solid salmon ;
+  
 }
 .article > img {
   box-shadow: #000;

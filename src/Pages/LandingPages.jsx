@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar/Navbar';
 import {Outlet} from "react-router-dom"
-
+import styles from "./landing.module.css"
 
 
 
@@ -10,7 +10,7 @@ const LNavbar1 = () => {
     <div
       style={{
         width: "100%",
-        border: "thin solid red",
+        
         borderBottom: "thin solid black",
         padding: "1rem",
         position: "fixed",
@@ -27,15 +27,15 @@ const LNavbar1 = () => {
 
 const LandingPages = () => {
   return (
-    <main>
-      <header>
+    <>
+      <header className={styles.navbar}>
         <Navbar></Navbar>
-        <LNavbar1 ></LNavbar1>
+        <LNavbar1></LNavbar1>
       </header>
       <section className="main">
         <Outlet />
       </section>
-    </main>
+    </>
   );
 }
 
