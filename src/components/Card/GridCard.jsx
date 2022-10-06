@@ -1,20 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./card.module.css";
 import Card from "./Card";
 import Spinner from "../Spinner/Spinner";
 import { useGetPdroductsQuery } from "../../features/Products/productSlice";
 import { useSearchParams } from "react-router-dom";
-import { useDebounce } from "../../hooks/useDebounce"
-
+import { useDebounce } from "../../hooks/useDebounce";
+import { Empyty } from "../Empyty/Empyty";
 
 const GridCard = () => {
+  const [productsexit, setNoProducts] = useState(true);
   const { data: prodcuts, isError, isLoading } = useGetPdroductsQuery();
   console.log("ver producst", prodcuts ?? []);
   const [searchparams] = useSearchParams();
   const filter = searchparams.get("categoria");
-//  const filter = searchparams.get("filter") ?? "";
-   console.log("ver Tipo Data", Boolean(filter))
-   const debouncedSearch = useDebounce(filter, 3000);
+  //  const filter = searchparams.get("filter") ?? "";
+  //console.log("ver Tipo Data", Boolean(filter));
+
+  const debouncedSearch = useDebounce(filter, 300);
+  console.log("verProducts", debouncedSearch);
+
+  useEffect(() => {
+    console.log("ver el componente");
+    
+      setNoProducts(
+        prodcuts?.some((prod) =>
+          prod.category.toLowerCase().includes(debouncedSearch?.toLowerCase())
+        )
+      );
+  }, [debouncedSearch, prodcuts]);
+  console.log("ver si exis", productsexit);
+
+  if (!productsexit && debouncedSearch !== null) {
+    return <Empyty />;
+  }
+
   if (isLoading) {
     return <Spinner />;
   }

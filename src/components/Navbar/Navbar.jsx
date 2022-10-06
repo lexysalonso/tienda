@@ -1,17 +1,21 @@
-import React, { useRef, useState } from "react";
+import React, {  useState } from "react";
 import style from "./navbar.module.css";
 import { NavLink } from "react-router-dom";
 import card from "./card.svg";
 import menu from "./menu_hambuger.svg";
 import close from "./close-icon.svg";
-import { useSearchParams } from "react-router-dom";
+import {  useNavigate , useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [open, SetOpen] = useState(true);
-  const [searchparams, SetSearchParams] = useSearchParams();
+//  const [searchparams, SetSearchParams] = useSearchParams();
+  const navigate = useNavigate()
+  const locations = useLocation()
+  
 
   const handleSearch = (e) => {
-    SetSearchParams({ categoria: e.target.value });
+    navigate(`search?categoria=${e.target.value}`);
+  // SetSearchParams({ categoria: e.target.value });
   };
 
    
@@ -19,7 +23,7 @@ const Navbar = () => {
   const handleSubmit = () => {
     SetOpen(false);
     console.log("success");
-    console.log("ver serach params", searchparams.get("categoria"));
+    console.log("ver locations", locations);
   };
 
   let active = {
@@ -42,12 +46,7 @@ const Navbar = () => {
               className={style.navbar_input}
               onChange={handleSearch}
             />{" "}
-            <button
-              onClick={handleSearch}
-              className={style.navbar__inputbutton__search}
-            >
-              Buscar
-            </button>
+            
           </article>
           <article className={style.navbar__menu}>
             <button className={style.navbar__button}>

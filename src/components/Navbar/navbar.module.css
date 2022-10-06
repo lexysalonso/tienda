@@ -93,11 +93,13 @@
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  position: relative;
+  
+  
 }
 .navbar__button {
+  position: relative;
   padding: 0;
-  height: 2rem;
+  height: 3rem;
   width: 2rem;
   background-color: transparent;
   border: 0;

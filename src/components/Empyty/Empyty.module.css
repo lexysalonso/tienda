@@ -1,0 +1,10 @@
+.noexists{
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  color: red;
+  font-weight: bold;
+  font-size: 24px;
+  border: thick dotted black;
+  text-align: center;
+}

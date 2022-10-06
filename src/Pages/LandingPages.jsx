@@ -5,7 +5,7 @@ import styles from "./landing.module.css"
 
 
 
-const LNavbar1 = () => {
+/* const LNavbar1 = () => {
   return (
     <div
       style={{
@@ -20,7 +20,7 @@ const LNavbar1 = () => {
       Navbar1
     </div>
   );
-}
+} */
 
 
 
@@ -30,7 +30,7 @@ const LandingPages = () => {
     <>
       <header className={styles.navbar}>
         <Navbar></Navbar>
-        <LNavbar1></LNavbar1>
+        
       </header>
       <section className="main">
         <Outlet />
@@ -39,4 +39,4 @@ const LandingPages = () => {
   );
 }
 
-export default LandingPages
+export default LandingPages ;
