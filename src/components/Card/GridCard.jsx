@@ -1,15 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 import style from "./card.module.css";
 import Card from "./Card";
 import Spinner from "../Spinner/Spinner";
-import { useGetPdroductsQuery } from "../../features/Products/productSlice";
 import { useSearchParams } from "react-router-dom";
 import { useDebounce } from "../../hooks/useDebounce";
 import { Empyty } from "../Empyty/Empyty";
+import { useGetProductsQuery } from '../../features/Products/productApi';
 
 const GridCard = () => {
   const [productsexit, setNoProducts] = useState(true);
-  const { data: prodcuts, isError, isLoading } = useGetPdroductsQuery();
+  const {
+    data: prodcuts,
+    isError,
+    isLoading,
+    isFetching,
+  } = useGetProductsQuery(/* undefined, {
+    pollingInterval: 3000,
+  } */);
   console.log("ver producst", prodcuts ?? []);
   const [searchparams] = useSearchParams();
   const filter = searchparams.get("categoria");
@@ -21,20 +28,28 @@ const GridCard = () => {
 
   useEffect(() => {
     console.log("ver el componente");
-    
-      setNoProducts(
-        prodcuts?.some((prod) =>
-          prod.category.toLowerCase().includes(debouncedSearch?.toLowerCase())
-        )
-      );
+
+    setNoProducts(
+      prodcuts?.some((prod) =>
+        prod.category.toLowerCase().includes(debouncedSearch?.toLowerCase())
+      )
+    );
   }, [debouncedSearch, prodcuts]);
   console.log("ver si exis", productsexit);
-
+  
   if (!productsexit && debouncedSearch !== null) {
-    return <Empyty />;
+    return (
+      <div>
+        <Empyty />
+      </div>
+    ); 
   }
 
   if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (isFetching) {
     return <Spinner />;
   }
   if (isError)
@@ -45,6 +60,7 @@ const GridCard = () => {
     );
   return (
     <div className={style.container}>
+      
       <section className={style.grid}>
         {prodcuts.length > 0
           ? prodcuts
@@ -62,4 +78,4 @@ const GridCard = () => {
   );
 };
 
-export default GridCard;
+export default memo(GridCard);

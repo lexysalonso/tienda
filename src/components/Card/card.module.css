@@ -3,7 +3,6 @@
   margin-left: auto;
   margin-right: auto;
   padding-left: 4rem;
-
 }
 img {
   max-width: 100%;
@@ -14,11 +13,12 @@ img {
   background-color: #fff;
   text-align: center;
   border-radius: 2rem;
+  transition: transform 1s ease-in-out ;
 }
-.article:hover{
-  transform: translate(-20px,-15px);
-  border-bottom: thick solid salmon ;
-  
+.article:hover {
+  /* transform: translate(-20px,-15px);*/
+  transform: scale(0.9);
+  /*border-bottom: thick solid salmon;*/
 }
 .article > img {
   box-shadow: #000;
@@ -34,18 +34,17 @@ img {
   gap: 1rem;
 }
 
-.button{
+.button {
   width: 8rem;
-  padding:0.5rem;
-  background-color:rgba(69, 101, 219, 0.829);
+  padding: 0.5rem;
+  background-color: rgba(69, 101, 219, 0.829);
   border: 0;
   border-radius: 2rem;
   color: #fff;
-  
 }
 .prueba {
-   transform: scale(1.5,1.5);
+  transform: scaleX(-1deg);
 }
-.spinner{
- text-align: center;
+.spinner {
+  text-align: center;
 }

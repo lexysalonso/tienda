@@ -1,30 +1,41 @@
-import React, {  useState } from "react";
+import React from "react";
 import style from "./navbar.module.css";
 import { NavLink } from "react-router-dom";
 import card from "./card.svg";
 import menu from "./menu_hambuger.svg";
 import close from "./close-icon.svg";
-import {  useNavigate , useLocation } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
+//import ShoppingCard from "../shoppingCard/ShoppingCard";
+import useCard from "../../hooks/useCard";
+import { useAuth } from "../../hooks/useAuth";
+
+import "react-toastify/dist/ReactToastify.css";
+
 
 const Navbar = () => {
-  const [open, SetOpen] = useState(true);
-//  const [searchparams, SetSearchParams] = useSearchParams();
-  const navigate = useNavigate()
-  const locations = useLocation()
-  
+  const { open, SetOpen, handleSubmit, handleSetOpen, handleSearch } =
+    useCard();
+  const { loggee, user, handleLogout } = useAuth();
 
-  const handleSearch = (e) => {
-    navigate(`search?categoria=${e.target.value}`);
+  console.log("ver logee33", loggee);
+  console.log("ver user", user);
+
+  //  const [open, SetOpen] = useState(true);
+  // const [counts, setCount] = useState();
+  //  const [searchparams, SetSearchParams] = useSearchParams();
+  //const navigate = useNavigate();
+  //  const locations = useLocation()
+
+  // const handleSearch = (e) => navigate(`search?categoria=${e.target.value}`);
   // SetSearchParams({ categoria: e.target.value });
-  };
 
-   
+  //const sumar =  useCallback(() => setCount(counts + 1),[counts]);
 
-  const handleSubmit = () => {
+  /*  const handleSubmit = () => {
     SetOpen(false);
     console.log("success");
     console.log("ver locations", locations);
-  };
+  };  */
 
   let active = {
     textDecoration: "none",
@@ -35,34 +46,46 @@ const Navbar = () => {
     <header className={style.navbar}>
       <div className={style.container}>
         <section className={style.navbar__top}>
-          <button onClick={handleSubmit} className={style.navbar__button}>
+          <button onClick={handleSetOpen} className={style.navbar__button}>
             <img className={style.navbar__img} src={menu} alt="car-img" />
           </button>
-
-          <article>
+          <article className={style.navbar__user}>
+            <p>{user && <p>Bienvenido: {user.user}</p>}</p>
+          </article>
+          <form onSubmit={handleSubmit}>
             <input
               type="search"
               placeholder="Categoria para buscar"
               className={style.navbar_input}
               onChange={handleSearch}
             />{" "}
-            
-          </article>
+          </form>
+
           <article className={style.navbar__menu}>
             <button className={style.navbar__button}>
               <div className={style.navbar__ammout}>5</div>
               <img className={style.navbar__img} src={card} alt="car-img" />
             </button>
-            <NavLink
-              to="login"
-              onClick={handleSubmit}
-              className={style.navbar__menulogin}
-              style={({ isActive }) => (isActive ? active : undefined)}
-            >
-              {" "}
-              Login{" "}
-            </NavLink>
-            <NavLink className={style.navbar__menulogin}>Logout</NavLink>
+            <article className={style.navbar__buttonloginandlogout}>
+              {!loggee && (
+                <NavLink
+                  to="login"
+                  onClick={handleSubmit}
+                  style={({ isActive }) => (isActive ? active : undefined)}
+                >
+                  {" "}
+                  <p>Login</p>
+                </NavLink>
+              )}
+              {loggee && (
+                <NavLink
+                 onClick={handleLogout}
+                 style={({ isActive }) => (isActive ? active : undefined)}
+                >
+                  <p>Logout</p>
+                </NavLink>
+              )}
+            </article>
           </article>
         </section>
       </div>

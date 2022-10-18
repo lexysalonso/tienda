@@ -30,9 +30,8 @@ const LandingPages = () => {
     <>
       <header className={styles.navbar}>
         <Navbar></Navbar>
-        
       </header>
-      <section className="main">
+      <section className={styles.content}>
         <Outlet />
       </section>
     </>
