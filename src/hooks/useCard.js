@@ -28,6 +28,10 @@ const useCard = () => {
     setSearch(e.target.value);   
     navigate(`search?categoria=${e.target.value}`);
    }
+
+   const handleSendId =(id)=>{
+     navigate(`details/${id}`);
+   } 
   /* let obj = {
     category: "jewelery",
     apellidos: null,
@@ -75,6 +79,7 @@ let categorys = await result.json()
     handleSubmit,
     handleSetOpen,
     handleSearch,
+    handleSendId,
     open,
     SetOpen,
     

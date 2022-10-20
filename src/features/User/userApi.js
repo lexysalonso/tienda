@@ -3,10 +3,11 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { loginUser } from "./userSlice";
 import jwt_decode from "jwt-decode";
 import Storage from "../../hooks/Storage";
-import toast from "../../components/Toast/Toast"
+import toast from "../../components/Toast/Toast";
 
 const API = "https://fakestoreapi.com/";
 //const API = "https://reqres.in/api/";
+
 const storage = Storage();
 export const userApi = createApi({
   reducerPath: "User",
@@ -35,9 +36,8 @@ export const userApi = createApi({
           storage.save(storage.Keys.auth, data?.token);
           dispatch(loginUser(jwt_decode(data?.token)));
           toast.Toast_Success("El usuario se logueado correctamente");
-
         } catch (error) {
-          console.log("ver error login", error)
+          console.log("ver error login", error);
           toast.Toast_Error(error.error.data);
         }
       },

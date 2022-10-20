@@ -60,7 +60,12 @@ const GridCard = () => {
     );
   return (
     <div className={style.container}>
-      
+      <div className={style.title}>
+        <h1>
+          <cite>Variedades para ti</cite>
+        </h1>
+      </div>
+
       <section className={style.grid}>
         {prodcuts.length > 0
           ? prodcuts

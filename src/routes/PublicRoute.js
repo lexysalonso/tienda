@@ -1,12 +1,18 @@
-
-import React from 'react'
+import React from "react";
 import { useAuth } from "../hooks/useAuth";
 import { Navigate } from "react-router-dom";
+import jwt_decode from "jwt-decode";
+import Storage from "../hooks/Storage";
 
-
-const PublicRoute = ({children}) => {
-  const {loggee} = useAuth()
-  return loggee ? <Navigate to="/"/> : children
-}
+const storage = Storage();
+const PublicRoute = ({ children }) => {
+  /* let userlocalStorage = storage.load(storage.Keys.auth)
+    ? jwt_decode(storage.load(storage.Keys.auth))
+    : { user: null }; */
+  //  console.log("USER LOGUEE", userlocalStorage?)
+  const { userlocalStorage } = useAuth();
+  console.log("ver User public", userlocalStorage);
+  return userlocalStorage?.user ? <Navigate to="/" /> : children;
+};
 
 export default PublicRoute;

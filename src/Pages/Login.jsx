@@ -5,9 +5,9 @@ import { useAuth } from "../hooks/useAuth";
 import { FaSpinner } from "react-icons/fa";
 //import Spinner from "../components/Spinner/Spinner";
 const Login = () => {
-  const { form, reset, error, isError, isSuccess, isLoading ,handlechange, handleSubmit } =
+  const { form, reset, error, isError, isLoading ,handlechange, handleSubmit } =
     useAuth();
-   console.log("veer variables", error, isError ,isSuccess) 
+   
      
   return (
     <>

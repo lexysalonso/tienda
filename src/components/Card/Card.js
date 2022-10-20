@@ -1,11 +1,11 @@
-import React,{} from "react";
+import React from "react";
 import style from "./card.module.css";
-
-
+//import useCard from "../../hooks/useCard";
+import useCard from "../../hooks/useCard";
 
 const Card = ({ item }) => {
   // const isOpenMenu = true
- console.log("se monto el componwnte Card")
+  const {handleSendId} = useCard()
   return (
     <article className={style.article}>
       <img src={item.image} alt={item.category} />
@@ -13,8 +13,9 @@ const Card = ({ item }) => {
         <p>Category: {item.category}</p>
         <p>Precio: {item.price} $</p>
         <p>Cantidad: {item.rating.count} </p>
-        
-        <button className={style.button} onClick={()=>console.log("Detalles")}>Detalles</button>
+        <button className={style.link} onClick={()=>handleSendId(item.id)}>
+          Detalles
+        </button>
       </aside>
     </article>
   );

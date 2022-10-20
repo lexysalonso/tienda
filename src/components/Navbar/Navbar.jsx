@@ -1,24 +1,19 @@
 import React from "react";
 import style from "./navbar.module.css";
-import { NavLink } from "react-router-dom";
 import card from "./card.svg";
 import menu from "./menu_hambuger.svg";
 import close from "./close-icon.svg";
+import search from "./search.svg"
 //import { useNavigate } from "react-router-dom";
 //import ShoppingCard from "../shoppingCard/ShoppingCard";
 import useCard from "../../hooks/useCard";
 import { useAuth } from "../../hooks/useAuth";
 
-import "react-toastify/dist/ReactToastify.css";
-
-
 const Navbar = () => {
   const { open, SetOpen, handleSubmit, handleSetOpen, handleSearch } =
     useCard();
-  const { loggee, user, handleLogout } = useAuth();
-
-  console.log("ver logee33", loggee);
-  console.log("ver user", user);
+  const {  userlocalStorage, handleLogout } = useAuth();
+  console.log("Navbar user", userlocalStorage);
 
   //  const [open, SetOpen] = useState(true);
   // const [counts, setCount] = useState();
@@ -37,11 +32,6 @@ const Navbar = () => {
     console.log("ver locations", locations);
   };  */
 
-  let active = {
-    textDecoration: "none",
-    color: "red",
-  };
-
   return (
     <header className={style.navbar}>
       <div className={style.container}>
@@ -49,9 +39,7 @@ const Navbar = () => {
           <button onClick={handleSetOpen} className={style.navbar__button}>
             <img className={style.navbar__img} src={menu} alt="car-img" />
           </button>
-          <article className={style.navbar__user}>
-            <p>{user && <p>Bienvenido: {user.user}</p>}</p>
-          </article>
+
           <form onSubmit={handleSubmit}>
             <input
               type="search"
@@ -59,6 +47,9 @@ const Navbar = () => {
               className={style.navbar_input}
               onChange={handleSearch}
             />{" "}
+            <div>
+              <img src={search} alt={search} />
+            </div>
           </form>
 
           <article className={style.navbar__menu}>
@@ -66,24 +57,35 @@ const Navbar = () => {
               <div className={style.navbar__ammout}>5</div>
               <img className={style.navbar__img} src={card} alt="car-img" />
             </button>
+            <article className={style.navbar__user}>
+              <div>
+                {userlocalStorage && (
+                  <div>
+                    {" "}
+                    <cite>Bienvenido:</cite> <p>{userlocalStorage.user}</p>
+                  </div>
+                )}
+              </div>
+            </article>
             <article className={style.navbar__buttonloginandlogout}>
-              {!loggee && (
-                <NavLink
-                  to="login"
+              {!userlocalStorage.user && (
+                <button
+                  // to="/login"
                   onClick={handleSubmit}
-                  style={({ isActive }) => (isActive ? active : undefined)}
+                  //  style={({ isActive }) => (isActive ? active : undefined)}
                 >
                   {" "}
-                  <p>Login</p>
-                </NavLink>
+                  Login
+                </button>
               )}
-              {loggee && (
-                <NavLink
-                 onClick={handleLogout}
-                 style={({ isActive }) => (isActive ? active : undefined)}
+              {userlocalStorage.user && (
+                <button
+                  //   to="login"
+                  onClick={handleLogout}
+                  // style={({ isActive }) => (isActive ? active : undefined)}
                 >
-                  <p>Logout</p>
-                </NavLink>
+                  Logout
+                </button>
               )}
             </article>
           </article>

@@ -5,7 +5,7 @@ import GridCard from "./components/Card/GridCard";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
 import Login from "./Pages/Login";
-
+import DetailsProducts from "./Pages/DetailsProducts";
 
 
 function App() {
@@ -26,6 +26,22 @@ function App() {
             element={
               <PrivateRoute>
                 <GridCard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/search/details/:id"
+            element={
+              <PrivateRoute>
+                <DetailsProducts />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/details/:id"
+            element={
+              <PrivateRoute>
+                <DetailsProducts />
               </PrivateRoute>
             }
           />

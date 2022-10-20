@@ -61,8 +61,22 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.navbar__top form {
+  position: relative;
+  width: 30vw;
+  padding: 0 15px;
+}
+.navbar__top form img {
+  position: absolute;
+  height: 60%;
+  top:10px;
+  right: 0px;
+  padding: 0;
+  margin: 0;
+}
 .navbar_input {
-  padding: 15px;
+  padding: 15px ;
   border: 0;
   border-radius: 2rem;
   width: 30vw;
@@ -74,6 +88,7 @@
 .navbar__menu {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 1rem;
   
   
@@ -118,18 +133,25 @@
   font-weight: bold;
 }
 
-.navbar__buttonloginandlogout > * {
-  text-decoration: none;
-}
-.navbar__buttonloginandlogout p {
+.navbar__buttonloginandlogout  button {
   padding: 5px 20px;
   border-radius: 2rem;
   background-color: #000;
+  border: 0;
+  font-size: 16px;
+  font-weight: bold;
   color: red;
+  align-self: center;
 }
-.navbar__buttonloginandlogout p:hover {
+
+.navbar__buttonloginandlogout button:hover {
   opacity: .5;
+  cursor: pointer;
 }
 .list {
   text-decoration: none;
+}
+.navbar__user p{
+ display: inline-block;
+ color: red;
 }
