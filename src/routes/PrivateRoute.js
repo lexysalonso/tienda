@@ -1,10 +1,10 @@
 import React from "react";
-import { useAuth } from "../hooks/useAuth";
+import useAuth  from "../hooks/useAuth";
 import { Navigate } from "react-router-dom";
-import Storage from "../hooks/Storage";
-import jwt_decode from "jwt-decode";
+//import Storage from "../hooks/Storage";
 
-const storage = Storage();
+
+//const storage = Storage();
  const PrivateRoute = ({ children }) => {
  /* let userlocalStorage = storage.load(storage.Keys.auth)
     ? jwt_decode(storage.load(storage.Keys.auth))

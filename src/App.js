@@ -1,7 +1,7 @@
 import "./App.css";
 import LandingPages from "./Pages/LandingPages";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import GridCard from "./components/Card/GridCard";
+import GridCard from "./components/Products/GridCard";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
 import Login from "./Pages/Login";

@@ -9,7 +9,7 @@ import jwt_decode from "jwt-decode";
 
 const storage = Storage();
 
-export const useAuth = () => {
+const useAuth = () => {
   console.log("SE EJECUTO");
   const [form, SetForm] = useState({
     username: "",
@@ -20,7 +20,7 @@ export const useAuth = () => {
       : { user: null });
 
 
-  const [createPost, { reset, error, isError, isLoading, isSuccess }] =
+  const [userLogin, { reset, error, isError, isLoading, isSuccess }] =
     useUserLoginMutation();
 
   const dispatch = useDispatch();
@@ -39,10 +39,10 @@ export const useAuth = () => {
     async (e) => {
       e.preventDefault();
       console.log("login", form);
-      await createPost(form).unwrap();
+      await userLogin(form).unwrap();
       navigate("/");
     },
-    [createPost,navigate,form]
+    [userLogin, navigate, form]
   );
 
   const handleLogout =useCallback(() => {
@@ -56,7 +56,7 @@ export const useAuth = () => {
     SetUser(storage.load(storage.Keys.auth)
       ? jwt_decode(storage.load(storage.Keys.auth))
       : { user: null });
-  }, [handleSubmit, handleLogout]);
+  }, [navigate]);
     
   return {
     form,
@@ -74,3 +74,5 @@ export const useAuth = () => {
     handleLogout,
   };
 };
+
+export default useAuth;

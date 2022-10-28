@@ -1,36 +1,25 @@
 import React from "react";
+
 import style from "./navbar.module.css";
-import card from "./card.svg";
+//import card from "./card.svg";
 import menu from "./menu_hambuger.svg";
 import close from "./close-icon.svg";
-import search from "./search.svg"
+import search from "./search.svg";
 //import { useNavigate } from "react-router-dom";
-//import ShoppingCard from "../shoppingCard/ShoppingCard";
-import useCard from "../../hooks/useCard";
-import { useAuth } from "../../hooks/useAuth";
+import ShoppingCard from "../shoppingCard/ShoppingCard";
+import useAuth from "../../hooks/useAuth";
+import useNavbar from "../../hooks/useNabvar";
+import useModal from "../../hooks/useModal";
+import Modal from "../Modal/Modal";
+import { CSSTransition } from "react-transition-group";
+import styletransicion from "./ModalTransicion.module.css";
+import { FaCartPlus } from "react-icons/fa";
 
 const Navbar = () => {
-  const { open, SetOpen, handleSubmit, handleSetOpen, handleSearch } =
-    useCard();
-  const {  userlocalStorage, handleLogout } = useAuth();
+  const { open, card:cardCarrito, SetOpen, handleSetOpen, handleSearch } = useNavbar();
+  const { userlocalStorage, handleLogout } = useAuth();
+  const [isOpen, openModal, closeModal] = useModal();
   console.log("Navbar user", userlocalStorage);
-
-  //  const [open, SetOpen] = useState(true);
-  // const [counts, setCount] = useState();
-  //  const [searchparams, SetSearchParams] = useSearchParams();
-  //const navigate = useNavigate();
-  //  const locations = useLocation()
-
-  // const handleSearch = (e) => navigate(`search?categoria=${e.target.value}`);
-  // SetSearchParams({ categoria: e.target.value });
-
-  //const sumar =  useCallback(() => setCount(counts + 1),[counts]);
-
-  /*  const handleSubmit = () => {
-    SetOpen(false);
-    console.log("success");
-    console.log("ver locations", locations);
-  };  */
 
   return (
     <header className={style.navbar}>
@@ -40,7 +29,7 @@ const Navbar = () => {
             <img className={style.navbar__img} src={menu} alt="car-img" />
           </button>
 
-          <form onSubmit={handleSubmit}>
+          <form>
             <input
               type="search"
               placeholder="Categoria para buscar"
@@ -53,13 +42,15 @@ const Navbar = () => {
           </form>
 
           <article className={style.navbar__menu}>
-            <button className={style.navbar__button}>
-              <div className={style.navbar__ammout}>5</div>
-              <img className={style.navbar__img} src={card} alt="car-img" />
+            <button className={style.navbar__button} onClick={openModal}>
+              <div id="openModal" className={style.navbar__ammout}>
+                {cardCarrito.length}
+              </div>
+              <FaCartPlus className={style.FaCard}/>
             </button>
             <article className={style.navbar__user}>
               <div>
-                {userlocalStorage && (
+                {userlocalStorage.user && (
                   <div>
                     {" "}
                     <cite>Bienvenido:</cite> <p>{userlocalStorage.user}</p>
@@ -68,24 +59,9 @@ const Navbar = () => {
               </div>
             </article>
             <article className={style.navbar__buttonloginandlogout}>
-              {!userlocalStorage.user && (
-                <button
-                  // to="/login"
-                  onClick={handleSubmit}
-                  //  style={({ isActive }) => (isActive ? active : undefined)}
-                >
-                  {" "}
-                  Login
-                </button>
-              )}
+              {!userlocalStorage.user && <button> Login</button>}
               {userlocalStorage.user && (
-                <button
-                  //   to="login"
-                  onClick={handleLogout}
-                  // style={({ isActive }) => (isActive ? active : undefined)}
-                >
-                  Logout
-                </button>
+                <button onClick={handleLogout}>Logout</button>
               )}
             </article>
           </article>
@@ -110,6 +86,18 @@ const Navbar = () => {
             </ul>
           </div>
         </article>
+      </div>
+      <div>
+        <CSSTransition
+          in={isOpen}
+          timeout={200}
+          classNames={styletransicion}
+          unmountOnExit
+        >
+          <Modal closeModal={closeModal}>
+            <ShoppingCard />
+          </Modal>
+        </CSSTransition>
       </div>
     </header>
   );

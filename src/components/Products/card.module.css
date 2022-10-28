@@ -20,13 +20,14 @@
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 4rem;
+  
 }
 img {
   max-width: 100%;
 }
 .article {
   width: 250px;
+  height: 100%;
   border: thick solid #fff;
   background-color: #fff;
   text-align: center;
@@ -48,17 +49,23 @@ img {
   object-position: left, top;
   height: 200px;
   background: transparent;
+  
 }
 .grid {
   display: grid;
   justify-content: space-between;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
+  gap: 2rem 0;
 }
+/* .grid {
+  display: flex;
+  flex-flow: row wrap;
+}
+.grid > * {
+ flex: 1 1 200px;
+} */
 
 .link {
-  display: block;
-  text-decoration: none;
   width: 10rem;
   padding: 0.5rem;
   background-color: rgba(69, 101, 219, 0.829);

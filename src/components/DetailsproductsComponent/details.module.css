@@ -1,15 +1,13 @@
-.title{
+.title {
   margin: 0 auto;
   width: 600px;
-  
 }
 .title h1 {
   font-weight: bold;
   font-size: 2rem;
   text-align: center;
-  color:rgb(109, 161, 238) ;
+  color: rgb(109, 161, 238);
 }
-
 
 .container {
   max-width: 900px;
@@ -26,18 +24,17 @@
 .details_image {
   flex: 1 1 200px;
 }
-.details_image_description{
+
+.details_image_description {
   text-align: center;
 }
 .details_image_description cite {
- color: red;
- 
+  color: red;
 }
 .details_image_description p {
- display: inline-block;
- margin-left: 10px;
+  display: inline-block;
+  margin-left: 10px;
 }
-
 
 .details_content p {
   line-height: 2rem;
@@ -51,7 +48,7 @@
 .details_content_link {
   padding: 5px 20px;
   border-radius: 2rem;
-  background-color: #000;
+  background-color: black;
   border: 0;
   font-size: 16px;
   font-weight: bold;

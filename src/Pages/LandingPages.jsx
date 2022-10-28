@@ -26,14 +26,17 @@ import styles from "./landing.module.css"
 
 
 const LandingPages = () => {
+  
   return (
     <>
       <header className={styles.navbar}>
         <Navbar></Navbar>
       </header>
+
       <section className={styles.content}>
         <Outlet />
       </section>
+      
     </>
   );
 }

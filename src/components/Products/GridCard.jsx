@@ -5,7 +5,7 @@ import Spinner from "../Spinner/Spinner";
 import { useSearchParams } from "react-router-dom";
 import { useDebounce } from "../../hooks/useDebounce";
 import { Empyty } from "../Empyty/Empyty";
-import { useGetProductsQuery } from '../../features/Products/productApi';
+import { useGetProductsQuery } from "../../features/Products/productApi";
 
 const GridCard = () => {
   const [productsexit, setNoProducts] = useState(true);
@@ -28,7 +28,6 @@ const GridCard = () => {
 
   useEffect(() => {
     console.log("ver el componente");
-
     setNoProducts(
       prodcuts?.some((prod) =>
         prod.category.toLowerCase().includes(debouncedSearch?.toLowerCase())
@@ -36,13 +35,13 @@ const GridCard = () => {
     );
   }, [debouncedSearch, prodcuts]);
   console.log("ver si exis", productsexit);
-  
+
   if (!productsexit && debouncedSearch !== null) {
     return (
       <div>
         <Empyty />
       </div>
-    ); 
+    );
   }
 
   if (isLoading) {
