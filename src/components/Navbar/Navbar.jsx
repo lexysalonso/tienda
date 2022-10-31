@@ -2,7 +2,7 @@ import React from "react";
 
 import style from "./navbar.module.css";
 //import card from "./card.svg";
-import menu from "./menu_hambuger.svg";
+//import menu from "./menu_hambuger.svg";
 import close from "./close-icon.svg";
 import search from "./search.svg";
 //import { useNavigate } from "react-router-dom";
@@ -13,20 +13,32 @@ import useModal from "../../hooks/useModal";
 import Modal from "../Modal/Modal";
 import { CSSTransition } from "react-transition-group";
 import styletransicion from "./ModalTransicion.module.css";
+import stylemenufilter from "./MenuFiltertransicion.module.css"
 import { FaCartPlus } from "react-icons/fa";
+import { GiHamburgerMenu } from "react-icons/gi";
+import logo from "./Logo/Nutella-logo.svg";
+import Filter from "../Filter/Filter";
 
 const Navbar = () => {
-  const { open, card:cardCarrito, SetOpen, handleSetOpen, handleSearch } = useNavbar();
+  const { card: cardCarrito, handleSearch } = useNavbar();
   const { userlocalStorage, handleLogout } = useAuth();
   const [isOpen, openModal, closeModal] = useModal();
+  const [menuFilter, SetOpenMenuFilter, SetCloseMenuFilter] = useModal();
   console.log("Navbar user", userlocalStorage);
+  console.log("ver variable menFilteer", menuFilter);
 
   return (
     <header className={style.navbar}>
       <div className={style.container}>
         <section className={style.navbar__top}>
-          <button onClick={handleSetOpen} className={style.navbar__button}>
-            <img className={style.navbar__img} src={menu} alt="car-img" />
+          <article>
+            <GiHamburgerMenu
+              onClick={SetOpenMenuFilter}
+              className={style.GIhambuger}
+            ></GiHamburgerMenu>
+          </article>
+          <button className={style.navbar__buttonlogo}>
+            <img className={style.navbar__img} src={logo} alt="car-img" />
           </button>
 
           <form>
@@ -46,7 +58,7 @@ const Navbar = () => {
               <div id="openModal" className={style.navbar__ammout}>
                 {cardCarrito.length}
               </div>
-              <FaCartPlus className={style.FaCard}/>
+              <FaCartPlus className={style.FaCard} />
             </button>
             <article className={style.navbar__user}>
               <div>
@@ -67,25 +79,19 @@ const Navbar = () => {
           </article>
         </section>
       </div>
-      <div className={open ? style.navbar__menuhamburger : ""}>
-        <article className={style.navbar__close}>
-          <div className={style.navbar__menuright}>
-            <button
-              onClick={() => SetOpen(true)}
-              className={style.navbar__closeimg}
-            >
-              <img src={close} alt="close" />
-            </button>
-
-            <ul className={style.navbar__menurightul}>
-              <li>Elemnto 1</li>
-              <li>Elemnto 2</li>
-              <li>Elemnto 3</li>
-              <li>Elemnto 4</li>
-              <li>Elemnto 5</li>
-            </ul>
-          </div>
-        </article>
+      <div>
+        <CSSTransition
+          in={menuFilter}
+          timeout={200}
+          classNames={stylemenufilter}
+          unmountOnExit
+        >
+          <Filter
+            menuFilter={menuFilter}
+            close={close}
+            SetCloseMenuFilter={SetCloseMenuFilter}
+          />
+        </CSSTransition>
       </div>
       <div>
         <CSSTransition

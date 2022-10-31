@@ -1,40 +1,20 @@
 import React, { memo } from "react";
 //import useCard from "../../hooks/useCard";
 import styles from "./shopping.module.css";
-import { useSelector, useDispatch } from "react-redux";
-//import { useNavigate } from 'react-router-dom';
-import {
-  clearToCard,
-  removeItemCard,
-} from "../../features/ShoppingCard/shoppingCardSlice";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { MdDeleteSweep } from "react-icons/md";
+import {MdAddShoppingCart} from "react-icons/md"
+import useShoppingCard from "../../hooks/useShoppingCard";
 
 const ShoppingCard = () => {
   //const navigate = useNavigate()
-  const dispatch = useDispatch();
-
-  const { card } = useSelector((state) => state.card);
-
-  const getTotalMony = () => {
-    let getTotal = card.reduce((acc, item) => {
-      acc += item.price * item.quantity;
-      return acc;
-    }, 0);
-    return getTotal;
-  };
-
-  const handleSubmit = () => {
-    dispatch(clearToCard());
-  };
-
-  const handleDelete = (item, change = false) => {
-    let item1 = {
-      item,
-      change,
-    };
-    dispatch(removeItemCard(item1, change));
-  };
+  const {
+    card,
+    getTotalMony,
+    handleSubmit,
+    handleClaer,
+    handleDelete,
+  } = useShoppingCard();
 
   return (
     <div className={styles.container}>
@@ -44,9 +24,7 @@ const ShoppingCard = () => {
       {card.length > 0
         ? card.map((item, index) => (
             <section key={index} className={styles.container_card}>
-              <article>
-                {item.title}
-              </article>
+              <article>{item.title}</article>
               <article>
                 <img src={item.image} alt="" />
               </article>
@@ -59,6 +37,10 @@ const ShoppingCard = () => {
                 <p>{item.quantity}</p>
               </article>
               <article>
+                <MdAddShoppingCart
+                  className={styles["icon_add"]}
+                  onClick={()=> handleSubmit(item)}
+                ></MdAddShoppingCart>
                 <RiDeleteBinFill
                   className={styles.icon}
                   onClick={() => handleDelete(item, true)}
@@ -77,7 +59,7 @@ const ShoppingCard = () => {
           <cite>Total ($) de su compra:</cite>
           <p> {`${getTotalMony()} $`} </p>
         </aside>
-        <button onClick={handleSubmit}>REVISAR</button>
+        <button onClick={handleClaer}>REVISAR</button>
       </article>
     </div>
   );

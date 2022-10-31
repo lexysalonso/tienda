@@ -72,6 +72,12 @@
   width: 2rem;
   cursor: pointer;
 }
+.icon_add {
+  color: green;
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+}
 .container_card article:last-child {
   display: flex;
   justify-content: space-between;

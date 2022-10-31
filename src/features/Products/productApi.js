@@ -1,11 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import toast from "../../components/Toast/Toast";
-const API = "https://fakestoreapi.com/";
+let API = process.env.REACT_APP_API 
+//const API = "https://fakestoreapi.com/";
 //const API = "https://reqres.in/api/";
 
 export const productsApi = createApi({
   reducerPath: "Products",
-  baseQuery: fetchBaseQuery({ baseUrl: API }),
+  baseQuery: fetchBaseQuery({ baseUrl:API }),
 
  /*  refetchOnMountOrArgChange: false,
   refetchOnReconnect: true,

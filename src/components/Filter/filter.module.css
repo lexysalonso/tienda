@@ -1,0 +1,36 @@
+.navbar__menuhamburger {
+  transform: translate(-100%, 0);
+}
+.navbar__menuright {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 25%;
+  background-color: #000;
+  z-index: 999;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 1s ease-in-out linear;
+}
+.navbar__close {
+  position: relative;
+}
+.navbar__closeimg {
+  position: absolute;
+  height: 1rem;
+  width: 1rem;
+  top: 5px;
+  right: 10px;
+  color: #fff;
+  border: none;
+  
+}
+
+.navbar__menurightul > li {
+  list-style: none;
+}

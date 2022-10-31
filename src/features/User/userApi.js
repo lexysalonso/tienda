@@ -5,7 +5,8 @@ import jwt_decode from "jwt-decode";
 import Storage from "../../hooks/Storage";
 import toast from "../../components/Toast/Toast";
 
-const API = "https://fakestoreapi.com/";
+//const API = "https://fakestoreapi.com/";
+let API = process.env.REACT_APP_API; 
 //const API = "https://reqres.in/api/";
 
 const storage = Storage();
