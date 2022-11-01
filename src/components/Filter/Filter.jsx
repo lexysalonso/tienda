@@ -15,10 +15,10 @@ const Filter = ({ close, SetCloseMenuFilter }) => {
 
           <ul className={style.navbar__menurightul}>
             <li>Elemnto 1 22</li>
-            <li>Elemnto 2</li>
-            <li>Elemnto 3</li>
-            <li>Elemnto 4</li>
-            <li>Elemnto 5</li>
+            <li>Elemnto 2 22</li>
+            <li>Elemnto 3 22</li>
+            <li>Elemnto 4 22</li>
+            <li>Elemnto 5 22</li>
           </ul>
         </div>
       </article>
