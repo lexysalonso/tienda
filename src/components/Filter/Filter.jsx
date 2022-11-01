@@ -14,7 +14,7 @@ const Filter = ({ close, SetCloseMenuFilter }) => {
           </button>
 
           <ul className={style.navbar__menurightul}>
-            <li>Elemnto 1</li>
+            <li>Elemnto 1 22</li>
             <li>Elemnto 2</li>
             <li>Elemnto 3</li>
             <li>Elemnto 4</li>
