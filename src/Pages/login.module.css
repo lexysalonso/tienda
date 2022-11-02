@@ -2,14 +2,14 @@
   width: 600px;
   height: 350px;
   background-color: #000;
-   
+
   margin-left: auto;
   margin-right: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 2rem  ;
+  border-radius: 2rem;
   box-shadow: 10px 10px 10px 10px #0007;
 }
 
@@ -17,52 +17,88 @@
   display: block;
   margin-top: 1rem;
 }
-.login_form input:required{
-   width: 300px;
-   padding: 1rem;
-   border:none;
-   background: transparent;
-   background-color: transparent;
-   border-bottom: 3px solid rgb(109, 161, 238);
-   outline: none;
-   font-weight: bold;
-   font-size: 1rem;
-   color: #fff;
-  
-}
 
-.login_form input:required:focus{
-  border: 2px solid rgb(109, 161, 238);
-  background-color: transparent !;
+.login_form input:required {
+  width: 300px;
+  padding: 1rem;
+  border: none;
+  background: transparent;
+  background-color: transparent;
+  border-bottom: 3px solid rgb(109, 161, 238);
+  outline: none;
+  font-weight: bold;
+  font-size: 1rem;
   color: #fff;
 }
-.login_form input[required]::placeholder{
+
+
+/* .login_form input[required]::placeholder{
   color:  rgb(109, 161, 238);
   
+} */
+
+
+.login_label,
+.password_label{
+  color: rgb(109, 161, 238);
 }
-.login_title{
+
+.login_form{
+  position: relative;
+}
+.login_label{
+  position: absolute;
+  top:10px;
+  left: 15px;
+  transition: transform .5s;
+}
+
+
+.login_input:not(:placeholder-shown) + .login_label  {
+  transform: translateY(-12px) scale(.7);
+  transform-origin: left top;
+  color: rgb(109, 161, 238);
+}
+
+
+
+.password_label{
+  position: absolute;
+  top:77px;
+  left: 15px;
+  transition: transform .5s;
+}
+.login_input:not(:placeholder-shown) + .password_label  {
+  transform: translateY(-12px) scale(.7);
+  transform-origin: left top;
+  color: rgb(109, 161, 238);
+}
+
+
+
+.login_title {
   font-weight: bold;
   font-size: 3rem;
   color: rgb(109, 161, 238);
 }
 
 .login_form > button {
-   width: 150px;
-   padding: 0.5rem;
-   margin-left: auto;
-   margin-right: auto;
-   border-radius: 2rem;
-   border: none;
-   background-color: rgb(109, 161, 238);
-   font-weight: bold;
-   font-size: 16px;
-   color: #fff;
+  width: 150px;
+  padding: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 2rem;
+  border: none;
+  background-color: rgb(109, 161, 238);
+  font-weight: bold;
+  font-size: 16px;
+  color: #fff;
 }
-.login_form > button:hover{
+.login_form > button:hover {
   cursor: pointer;
-  opacity: .8;
+  opacity: 0.8;
 }
-.error{
+.error {
   color: red;
 }
 

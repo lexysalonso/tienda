@@ -1,14 +1,13 @@
 import React from "react";
 import styles from "./login.module.css";
 //import { useUserLoginMutation } from "../features/User/userSlice";
-import useAuth  from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import { FaSpinner } from "react-icons/fa";
 //import Spinner from "../components/Spinner/Spinner";
 const Login = () => {
-  const { form, reset, error, isError, isLoading ,handlechange, handleSubmit } =
+  const { form, reset, error, isError, isLoading, handlechange, handleSubmit } =
     useAuth();
-   
-     
+
   return (
     <>
       <div className={styles.login}>
@@ -28,24 +27,34 @@ const Login = () => {
         >
           <input
             type="text"
-            placeholder="username"
+            placeholder=" "
             spellCheck={true}
             required
             onChange={handlechange}
             name="username"
             value={form.username}
             autoComplete="new-password"
+            className={styles.login_input}
+            id="name"
           />
+          <label htmlFor="name" className={styles.login_label}>
+            username
+          </label>
           <input
             type="password"
-            placeholder="Password"
+            placeholder=" "
             spellCheck={true}
             required
             onChange={handlechange}
             name="password"
             value={form.password}
             autoComplete="new-password"
+            className={styles.login_input}
+            id="paswword"
           />
+          <label htmlFor="paswword" className={styles.password_label}>
+            password
+          </label>
           <button onClick={reset} type="submit">
             Login
           </button>

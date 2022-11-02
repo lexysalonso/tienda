@@ -6,8 +6,7 @@
 .enterActive {
   opacity: 1;
   transform: translateX(0);
-
-  transition: opacity 6s linear 15s, transform 6s linear 15s;
+  transition: opacity 100ms ease-in-out, transform 500ms ease-in-out;
 }
 
 .exit {

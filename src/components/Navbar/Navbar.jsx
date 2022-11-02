@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useRef} from "react";
 
 import style from "./navbar.module.css";
 //import card from "./card.svg";
@@ -13,7 +13,7 @@ import useModal from "../../hooks/useModal";
 import Modal from "../Modal/Modal";
 import { CSSTransition } from "react-transition-group";
 import styletransicion from "./ModalTransicion.module.css";
-import stylemenufilter from "./MenuFiltertransicion.module.css"
+
 import { FaCartPlus } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import logo from "./Logo/Nutella-logo.svg";
@@ -24,6 +24,7 @@ const Navbar = () => {
   const { userlocalStorage, handleLogout } = useAuth();
   const [isOpen, openModal, closeModal] = useModal();
   const [menuFilter, SetOpenMenuFilter, SetCloseMenuFilter] = useModal();
+  const nodeRef = useRef(null)
   console.log("Navbar user", userlocalStorage);
   console.log("ver variable menFilteer", menuFilter);
 
@@ -80,18 +81,14 @@ const Navbar = () => {
         </section>
       </div>
       <div>
-        <CSSTransition
-          in={menuFilter}
-          timeout={200}
-          classNames={stylemenufilter}
-          unmountOnExit
-        >
+        
           <Filter
+            nodeRef={nodeRef}
             menuFilter={menuFilter}
             close={close}
             SetCloseMenuFilter={SetCloseMenuFilter}
-          />
-        </CSSTransition>
+          ></Filter>
+        
       </div>
       <div>
         <CSSTransition
