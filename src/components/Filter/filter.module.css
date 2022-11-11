@@ -5,8 +5,8 @@
   top: 10px;
   right: 10px;
   color: red;
-  
 }
+
 
 .navbar__menuright {
   position: fixed;
@@ -17,11 +17,6 @@
   width: 25%;
   background-color: black;
   z-index: 999;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   animation: transform1 900ms ease-in-out;
 }
 .navbar__closemenu {
@@ -34,17 +29,59 @@
   background-color: black;
   z-index: 999;
   color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   transform: translateX(-100%);
-  animation: transform2 900ms ease-out;
+  transition: transform 900ms ease-out;
 }
 
-.navbar__menurightul > li {
-  list-style: none;
+.navbar__menuselect__container {
+  width: 80%;
+  height: 100vh;
+  position: absolute;
+  top: 4rem;
+  left: .7rem;
+  color: #fff;
+  
+ }
+.navbar__menuselect__contain{
+  width: 100%;
+  padding: 4rem 1rem;
+  margin: 1rem auto;
+  border: 3px dashed #fff
+  
+   
+} 
+.navbar__menuselect select{
+  background-image:url("../../../assest/images.png");
+  background-repeat: no-repeat;
+  background-position: 235px 10px;
+  background-size: 10% ;
+  object-fit: cover;
+  
+ 
+   
 }
+.navbar__menuselect option {
+  background-color: black;
+  color: #fff;
+}
+
+.input_data{
+   width: 90%;
+   padding: .8rem;
+   margin: 1rem auto;
+   border-radius: 1rem;
+   border: 0;
+   outline: 0;
+   font-size: 16px;
+   font-weight: bold;
+   background-color: transparent;
+   color: #fff;
+   border: 2px solid #fff ;
+   appearance: none;
+   
+}
+
+
 
 @keyframes transform1 {
   from {
@@ -52,14 +89,5 @@
   }
   to {
     transform: translateX(0);
-  }
-}
-
-@keyframes transform2 {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
   }
 }

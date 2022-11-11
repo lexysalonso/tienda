@@ -1,11 +1,13 @@
-import React, { memo } from "react";
+import React from "react";
 import style from "./card.module.css";
-import Card from "./Card";
-import Spinner from "../Spinner/Spinner";
-import { Empyty } from "../Empyty/Empyty";
-import useProductsCard from "../../hooks/useProductsCard";
+import Card from "../../../components/Card";
+import Spinner from "../../../components/Spinner";
+import { Empyty } from "../../../components/Empyty";
+import useProductsCard from "../../../hooks/useProductsCard";
+
 
 const GridCard = () => {
+ 
 
   const {
     productGrid,
@@ -16,7 +18,7 @@ const GridCard = () => {
     debouncedSearch,
   } = useProductsCard();
 
-  console.log("ver Prodcuts first !!!", productGrid);
+ 
 
   if (!productsexit && debouncedSearch !== null) {
     return (
@@ -64,4 +66,4 @@ const GridCard = () => {
   );
 };
 
-export default memo(GridCard);
+export default GridCard;

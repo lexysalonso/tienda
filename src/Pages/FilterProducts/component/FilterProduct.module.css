@@ -1,0 +1,35 @@
+.title {
+  margin: 0 auto;
+  width: 450px;
+  background-color: #000;
+  margin-bottom: 3rem;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073,
+    0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+
+  border-radius: 1rem;
+}
+
+.title h1 {
+  font-weight: bold;
+  font-size: 3rem;
+  text-align: center;
+  color: #fff;
+  padding: 10px 0;
+}
+.container {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+.grid {
+  display: grid;
+  justify-content: space-evenly;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem 0;
+}
+
+.text_error{
+  text-align: center;
+  color: red;
+}

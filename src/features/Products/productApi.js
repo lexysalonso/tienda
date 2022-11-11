@@ -1,14 +1,16 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import toast from "../../components/Toast/Toast";
-let API = process.env.REACT_APP_API 
+import toast from "../../components/Toast";
+import { addToProduct } from "./productSlice"; 
+
+let API = process.env.REACT_APP_API;
 //const API = "https://fakestoreapi.com/";
 //const API = "https://reqres.in/api/";
 
 export const productsApi = createApi({
   reducerPath: "Products",
-  baseQuery: fetchBaseQuery({ baseUrl:API }),
+  baseQuery: fetchBaseQuery({ baseUrl: API }),
 
- /*  refetchOnMountOrArgChange: false,
+  /*  refetchOnMountOrArgChange: false,
   refetchOnReconnect: true,
   refetchOnFocus: true,
   pollingInterval: 3000, */
@@ -19,11 +21,12 @@ export const productsApi = createApi({
     getProducts: builder.query({
       query: () => "/products",
       providesTags: ["Products"],
-      async onQueryStarted(args, { queryFulfilled }) {
+      async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           console.log("Sucess pending prodcuts");
-          const { data } = await queryFulfilled;
-          console.log("Sucess o", data);
+          const {data} = await queryFulfilled;
+          console.log("SUCCESS OK RES", data);
+          dispatch(addToProduct(data));
           toast.Toast_Success("Los Productos se han cargado correctamente");
         } catch (error) {
           toast.Toast_Error(error.error.error);
@@ -35,7 +38,25 @@ export const productsApi = createApi({
         url: `/products/${id}`,
       }),
     }),
+    getCategory: builder.query({
+      query: () => ({
+        url: "/products/categories",
+      }),
+    }),
+    getCategoriexBYID: builder.query({
+      query: (categorie) => ({
+        url: `/products/category/${categorie}`,
+      }),
+      
+          
+      
+    
+    }),
   }),
 });
 
-export const { useGetProductsQuery } = productsApi;
+export const {
+  useGetProductsQuery,
+  useGetCategoryQuery,
+  useGetCategoriexBYIDQuery,
+} = productsApi;

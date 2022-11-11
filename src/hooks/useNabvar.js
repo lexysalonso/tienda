@@ -2,6 +2,7 @@ import {useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+
 const useNavbar = () => {
  
   const [open, SetOpen] = useState(true);
@@ -11,6 +12,7 @@ const useNavbar = () => {
   const {card} = useSelector((state)=>state.card)
 
   const navigate = useNavigate();
+ 
   
    const handleShopping= ()=>{
    console.log("Se ejecuto")
@@ -29,8 +31,9 @@ const useNavbar = () => {
     navigate(`search?categoria=${e.target.value}`);
    }
 
-   
-  
+   const handleHome =()=>{
+     navigate("/")
+   }
 
   return {
     card,
@@ -38,6 +41,7 @@ const useNavbar = () => {
     handleSetOpen,
     handleSearch,
     handleShopping,
+    handleHome,
     open,
     SetOpen,
     openModal,

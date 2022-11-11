@@ -3,49 +3,45 @@ import { useNavigate } from "react-router-dom";
 import { useDebounce } from "./useDebounce";
 import { useSearchParams } from "react-router-dom";
 import { useGetProductsQuery } from "../features/Products/productApi";
+import {useSelector} from 'react-redux'
 
 const useProductsCard = () => {
   const [productsexit, setNoProducts] = useState(true);
   const [productGrid,SetProductGrid] = useState([]);
+
+  const navigate = useNavigate();
+  
+  const {product} = useSelector((state)=>state.product)
+  const [searchparams] = useSearchParams();
+
+  const filter = searchparams.get("categoria");
+  const debouncedSearch = useDebounce(filter, 300);
  
   const {
-    data: prodcuts,
     isError,
     isLoading,
     isFetching,
   } = useGetProductsQuery();
   
   useEffect(() => {
-    SetProductGrid(prodcuts);
-  }, [prodcuts]);
+    SetProductGrid(product);
+  }, [product]);
   
-  
-  console.log("ver Prodcuts useGitBla !!!", productGrid);
-
-  const navigate = useNavigate();
-  const [searchparams] = useSearchParams();
-  
-  
-
-  console.log("ver data productsssss", prodcuts);
-  const filter = searchparams.get("categoria");
-  const debouncedSearch = useDebounce(filter, 300);
+  useEffect(() => {
+    setNoProducts(
+      product?.some((prod) =>
+        prod.category.toLowerCase().includes(debouncedSearch?.toLowerCase())
+      )
+    );
+  }, [debouncedSearch, product]);
 
   const handleSendId = (id) => {
     navigate(`details/${id}`);
   };
-
-  useEffect(() => {
-    setNoProducts(
-      prodcuts?.some((prod) =>
-        prod.category.toLowerCase().includes(debouncedSearch?.toLowerCase())
-      )
-    );
-  }, [debouncedSearch, prodcuts]);
+ 
 
   return {
     productGrid,
-    data: prodcuts,
     isError,
     isLoading,
     isFetching,

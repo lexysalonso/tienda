@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { loginUser } from "./userSlice";
 import jwt_decode from "jwt-decode";
 import Storage from "../../hooks/Storage";
-import toast from "../../components/Toast/Toast";
+import toast from "../../components/Toast";
 
 //const API = "https://fakestoreapi.com/";
 //const API = "https://fakestoreapi.com/";

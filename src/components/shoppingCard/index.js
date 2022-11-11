@@ -7,6 +7,7 @@ import {MdAddShoppingCart} from "react-icons/md"
 import useShoppingCard from "../../hooks/useShoppingCard";
 
 const ShoppingCard = () => {
+  console.log("VER SHOPPING CARD")
   //const navigate = useNavigate()
   const {
     card,

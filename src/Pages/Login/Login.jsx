@@ -1,13 +1,14 @@
 import React from "react";
 import styles from "./login.module.css";
 //import { useUserLoginMutation } from "../features/User/userSlice";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import { FaSpinner } from "react-icons/fa";
 //import Spinner from "../components/Spinner/Spinner";
+
 const Login = () => {
   const { form, reset, error, isError, isLoading, handlechange, handleSubmit } =
     useAuth();
-
+   
   return (
     <>
       <div className={styles.login}>
@@ -64,4 +65,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export  default Login ;
