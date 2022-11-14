@@ -31,7 +31,14 @@ const Toast_Warning = (sms) =>
     otpionsToast
     // style: { backgroundColor: "#07bc0c" },
   );  
+ 
+  const Toast_Info = (sms) =>
+    toast.info(
+      sms,
+      otpionsToast
+      // style: { backgroundColor: "#07bc0c" },
+    );  
 
- let ToastOperations = { Toast_Success, Toast_Error, Toast_Warning }  
+ let ToastOperations = {Toast_Info, Toast_Success, Toast_Error, Toast_Warning }  
 
 export default ToastOperations;

@@ -3,24 +3,16 @@ export { default as LandingPages } from "./LandingPages/LandingPages";
 export { default as FilterProducts } from "./FilterProducts/FilterProducts";
 export { default as DetailsProducts } from "./DetailsProducts/DetailsProducts";
 
-
-
-import React from 'react'
+import React from "react";
 
 const index = () => {
   return (
-    <section>
-      <aside>
-        <picture>
-           <summary>
-              <article></article>
-           </summary>
-        </picture>
-      </aside>
-    </section>
-  )
-}
+    <article>
+      <div>
+        <p>asddas</p>
+      </div>
+    </article>
+  );
+};
 
-export default index
-
-
+export default index;

@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 
-import  LandingPages  from "./Pages/LandingPages";
+import LandingPages from "./Pages/LandingPages";
 //import { Login } from "./Pages";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //import GridCard from "./components/Products/GridCard";
@@ -17,47 +17,16 @@ const FilterProducts = React.lazy(() => import("./Pages/FilterProducts"));
 const Login = React.lazy(() => import("./Pages/Login"));
 const ProductsGrid = React.lazy(() => import("./Pages/Products"));
 
-
-
-
 function App() {
   return (
     <Router>
       <Suspense fallback={<>Caragando ......</>}>
         <Routes>
           <Route path="/" element={<LandingPages />}>
-            <Route
-              index
-              element={
-                <PrivateRoute>
-                  <ProductsGrid />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="search"
-              element={
-                <PrivateRoute>
-                  <ProductsGrid />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/search/details/:id"
-              element={
-                <PrivateRoute>
-                  <DetailsProducts />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/filter/details/:id"
-              element={
-                <PrivateRoute>
-                  <DetailsProducts />
-                </PrivateRoute>
-              }
-            />
+            <Route index element={<ProductsGrid />} />
+            <Route path="search" element={<ProductsGrid />} />
+            <Route path="/search/details/:id" element={<DetailsProducts />} />
+            <Route path="/filter/details/:id" element={<DetailsProducts />} />
 
             <Route
               path="filter"
@@ -68,22 +37,8 @@ function App() {
               }
             />
 
-            <Route
-              path="/details/:id"
-              element={
-                <PrivateRoute>
-                  <DetailsProducts />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="login"
-              element={
-                <PublicRoute>
-                  <Login />
-                </PublicRoute>
-              }
-            />
+            <Route path="/details/:id" element={<DetailsProducts />} />
+            <Route path="/login" element={<Login />} />
           </Route>
         </Routes>
       </Suspense>

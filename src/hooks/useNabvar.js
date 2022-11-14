@@ -35,6 +35,10 @@ const useNavbar = () => {
      navigate("/")
    }
 
+   const handleLogin = () => {
+     navigate("/login");
+   };
+
   return {
     card,
     search,
@@ -45,6 +49,7 @@ const useNavbar = () => {
     open,
     SetOpen,
     openModal,
+    handleLogin,
   };
 };
 

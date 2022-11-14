@@ -1,4 +1,4 @@
-import React,{useRef, Suspense} from "react";
+import React, { useRef, Suspense } from "react";
 
 import style from "./navbar.module.css";
 //import card from "./card.svg";
@@ -20,14 +20,14 @@ import logo from "./Logo/Nutella-logo.svg";
 //import Filter from "../Filter/Filter";
 import { Link } from "react-router-dom";
 
-const Filter = React.lazy(()=>import("../Filter"))
+const Filter = React.lazy(() => import("../Filter"));
 
 const Navbar = () => {
-  const { card: cardCarrito, handleSearch } = useNavbar();
+  const { card: cardCarrito, handleSearch, handleLogin } = useNavbar();
   const { userlocalStorage, handleLogout } = useAuth();
   const [isOpen, openModal, closeModal] = useModal();
   const [menuFilter, SetOpenMenuFilter, SetCloseMenuFilter] = useModal();
-  const nodeRef = useRef(null)
+  const nodeRef = useRef(null);
   console.log("Navbar user", userlocalStorage);
   console.log("ver variable menFilteer", menuFilter);
 
@@ -75,7 +75,9 @@ const Navbar = () => {
               </div>
             </article>
             <article className={style.navbar__buttonloginandlogout}>
-              {!userlocalStorage.user && <button> Login</button>}
+              {!userlocalStorage.user && (
+                <button onClick={handleLogin}> Login</button>
+              )}
               {userlocalStorage.user && (
                 <button onClick={handleLogout}>Logout</button>
               )}
@@ -84,7 +86,7 @@ const Navbar = () => {
         </section>
       </div>
       <div>
-        <Suspense  fallback={<div>Cargandoooo</div>} >
+        <Suspense fallback={<div>Cargandoooo</div>}>
           <Filter
             nodeRef={nodeRef}
             menuFilter={menuFilter}
