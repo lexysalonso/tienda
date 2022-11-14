@@ -5,6 +5,22 @@ export { default as DetailsProducts } from "./DetailsProducts/DetailsProducts";
 
 
 
+import React from 'react'
 
+const index = () => {
+  return (
+    <section>
+      <aside>
+        <picture>
+           <summary>
+              <article></article>
+           </summary>
+        </picture>
+      </aside>
+    </section>
+  )
+}
+
+export default index
 
 
