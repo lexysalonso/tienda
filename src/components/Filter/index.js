@@ -11,7 +11,9 @@ const Filter = ({ menuFilter, SetCloseMenuFilter }) => {
     <article>
       <section
         className={
-          menuFilter ? style.navbar__menuright : style.navbar__closemenu
+          style.navbar_menu +
+          " " +
+          (menuFilter ? style.navbar__menuright : style.navbar__closemenu)
         }
       >
         <AiOutlineClose
