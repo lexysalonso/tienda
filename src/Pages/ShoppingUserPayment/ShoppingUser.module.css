@@ -1,0 +1,42 @@
+.container{
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.container div:first-child{
+  padding: 2rem;
+  
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+.imgcard{
+  width: 200px;
+  height: 100px;
+   
+}
+.imgcard img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.products{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+  padding: 1rem;
+  border-bottom: thick solid #000;
+  margin-bottom: 2rem;
+ 
+}
+.products:first-child {
+   border-top: thick solid #000;
+}
+
+em{
+  color: red;
+  opacity: 0.5;
+}

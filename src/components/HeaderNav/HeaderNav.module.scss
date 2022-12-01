@@ -1,0 +1,112 @@
+@use "../../styles/mixins" as mixin;
+@use "../../styles/placeholder" ;
+
+
+.container {
+  max-width: 1400px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.navbar__top {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.GIhambuger {
+  height: auto;
+  width: 2rem;
+}
+
+.navbar__top form {
+  position: relative;
+  width: 30vw;
+  padding: 0 15px;
+}
+.navbar__top form img {
+  position: absolute;
+  height: 60%;
+  top: 10px;
+  right: 0px;
+  padding: 0;
+  margin: 0;
+}
+.navbar_input {
+  padding: 15px;
+  border: 0;
+  border-radius: 2rem;
+  width: 30vw;
+  font-size: 1rem;
+  font-weight: bold;
+  outline: 0;
+  appearance: none;
+}
+
+.navbar__menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.navbar__button {
+  margin: auto 0;
+  height: 3rem;
+  width: 3rem;
+  background-color: transparent;
+  border: 0;
+  @include mixin.Flex($fd:column)
+ 
+}
+.navbar__button:hover {
+  cursor: pointer;
+}
+.navbar__buttonlogo {
+  height: 3rem;
+  width: 4rem;
+  background-color: transparent;
+  border: none;
+}
+.navbar__img {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  transform: scale(2);
+}
+.navbar__ammout {
+  width: 1.5rem;
+  background-color: red;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 50%;
+  margin-left: 0.5rem;
+}
+
+.FaCard {
+  height: 100vh;
+  width: 80%;
+}
+
+
+.navbar__buttonloginandlogout button {
+  @extend %button
+}
+
+.navbar__buttonloginandlogout button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.list {
+  text-decoration: none;
+}
+.navbar__user p {
+  display: inline-block;
+  color: red;
+}
+
+.navbar__FaAngle {
+  width: 13px;
+  height: 13px;
+  object-fit: cover;
+}

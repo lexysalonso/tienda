@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Storage from "./Storage";
 import jwt_decode from "jwt-decode";
 
+
 const storage = Storage();
 
 const useAuth = () => {
@@ -19,14 +20,15 @@ const useAuth = () => {
       ? jwt_decode(storage.load(storage.Keys.auth))
       : { user: null });
 
+   const state = useSelector((state) => state);
+   const { loggee, user } = state.user;     
+ 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
 
   const [userLogin, { reset, error, isError, isLoading, isSuccess }] =
     useUserLoginMutation();
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const state = useSelector((state) => state);
-  const { loggee, user } = state.user;
 
   const handlechange = (e) => {
     SetForm({

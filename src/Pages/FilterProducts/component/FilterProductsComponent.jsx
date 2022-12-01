@@ -1,14 +1,16 @@
 import React from "react";
-
 import Card from "../../../components/Card";
 import style from "./FilterProduct.module.css";
-import useFilter from "../../../hooks/useFilter";
+import Spinner from '../../../components/Spinner/index';
+import useDetailsFilter from '../../../hooks/useDetailsFilter';
 
 const FilterProdcutsComponent = () => {
-  const { productFilter } = useFilter();
+  
+   const { productFilter, isLoading } = useDetailsFilter();
 
   console.log("VER FILTER PRODUCT", productFilter);
-
+  if(isLoading) return <Spinner></Spinner>
+   
   return (
     <section className={style.container}>
       <div className={style.title}>

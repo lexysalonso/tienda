@@ -24,7 +24,7 @@ export const productsApi = createApi({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           console.log("Sucess pending prodcuts");
-          const {data} = await queryFulfilled;
+          const { data } = await queryFulfilled;
           console.log("SUCCESS OK RES", data);
           dispatch(addToProduct(data));
           toast.Toast_Success("Los Productos se han cargado correctamente");
@@ -47,16 +47,24 @@ export const productsApi = createApi({
       query: (categorie) => ({
         url: `/products/category/${categorie}`,
       }),
-      
-          
-      
-    
+    }),
+    getProductCard: builder.query({
+      query: (id) => ({
+        url: `/carts/user/${id}`,
+      }),
     }),
   }),
 });
 
+export const getProductCache = productsApi.endpoints.getProducts
+
 export const {
   useGetProductsQuery,
+  useLazyGetProductsQuery,
   useGetCategoryQuery,
   useGetCategoriexBYIDQuery,
+  useLazyGetCategoriexBYIDQuery,
+  useGetProductCardQuery,
+  useLazyGetProductCardQuery
+  
 } = productsApi;
