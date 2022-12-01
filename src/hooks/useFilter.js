@@ -1,64 +1,38 @@
-import {
-  useGetCategoryQuery,
-  useGetCategoriexBYIDQuery,
-} from "../features/Products/productApi";
-import { useState, useEffect } from "react";
-import { useDispatch , useSelector} from "react-redux";
-import { addToProductFilter } from "../features/Products/productSlice";
-import { useNavigate } from "react-router-dom";
-import { filterss } from "../helpers/filters";
+import { useContext } from "react";
+import { useGetCategoryQuery } from "../features/Products/productApi";
+import { useState } from "react";
+import { createSearchParams, useNavigate } from "react-router-dom";
+import NavbarContext from "../context/NavbarContext";
 
 const useFilter = () => {
   const [filters, setFilters] = useState(null);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [product, setProducts] = useState(
-    useSelector((state) => state.product.productFilter)
-  );
- 
+  const { isOpenMenuFilter, CloseMenuFilter } = useContext(NavbarContext); 
 
-  const {productFilter} = useSelector((state)=>state.product)
-
-  //const [filtercategories,setFilterCatagorie] = useState();
-  const { data } = useGetCategoryQuery();
-  const { data: filtercategorie } = useGetCategoriexBYIDQuery(
-    filters?.categorie
-  );
-
-  const hanndlechange = (e) => {
+ const { data } = useGetCategoryQuery();
+  
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFilters({
       ...filters,
       [name]: value,
     });
-    navigate("/filter");
   };
 
-  console.log("ver data de los filtros", filters);
-  console.log("ver data de los productos", product);
+  const handleClick = () => {
+    filters && navigate({
+      pathname: "filter",
+      search: createSearchParams(filters).toString(),
+    });
+  };
 
-  useEffect(() => {
-    if (filters !== null) {
-      const { categorie } = filters;
-      if (categorie !== undefined) {
-        setProducts(filtercategorie)
-        dispatch(addToProductFilter(filtercategorie));
-      }
-    }
-  }, [filters, dispatch, filtercategorie]);
-
-  useEffect(() => {
-    if (filters !== null) {
-      let result = filterss(filters, filtercategorie);
-      dispatch(addToProductFilter(result));
-    }
-  }, [filters, filtercategorie, dispatch]);
-
+ 
   return {
-    productFilter,
+    isOpenMenuFilter,
+    CloseMenuFilter,
     data,
-    hanndlechange,
-    filtercategorie,
+    handleChange,
+    handleClick,
   };
 };
 

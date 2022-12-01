@@ -1,22 +1,22 @@
 import React, { memo } from "react";
 //import useCard from "../../hooks/useCard";
-import styles from "./shopping.module.css";
+import styles from "./shopping.module.scss";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { MdDeleteSweep } from "react-icons/md";
 import {MdAddShoppingCart} from "react-icons/md"
 import useShoppingCard from "../../hooks/useShoppingCard";
 
 const ShoppingCard = () => {
-  console.log("VER SHOPPING CARD")
+  
   //const navigate = useNavigate()
   const {
     card,
     getTotalMony,
-    handleSubmit,
+    handleAdd,
     handleClaer,
     handleDelete,
   } = useShoppingCard();
-
+console.log("VER SHOPPING CARD", card);
   return (
     <div className={styles.container}>
       <article>
@@ -40,7 +40,7 @@ const ShoppingCard = () => {
               <article>
                 <MdAddShoppingCart
                   className={styles["icon_add"]}
-                  onClick={()=> handleSubmit(item)}
+                  onClick={()=> handleAdd(item)}
                 ></MdAddShoppingCart>
                 <RiDeleteBinFill
                   className={styles.icon}
@@ -55,7 +55,7 @@ const ShoppingCard = () => {
           ))
         : "No existen productos en el carrito"}
       <article>
-        <button onClick={handleSubmit}>Limpiar Compra</button>
+        <button onClick={handleClaer}>Limpiar Compra</button>
         <aside>
           <cite>Total ($) de su compra:</cite>
           <p> {`${getTotalMony()} $`} </p>

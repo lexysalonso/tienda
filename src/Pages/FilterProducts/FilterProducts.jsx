@@ -1,4 +1,4 @@
-import FilterProdcutsComponent from "./component/FilterProdcutsComponent";
+import FilterProdcutsComponent from "./component/FilterProductsComponent";
 
 
  const FilterProducts = () => {

@@ -1,54 +1,44 @@
-import {useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import useAuth from "./useAuth";
+import NavbarContext from "../context/NavbarContext";
 
 const useNavbar = () => {
- 
-  const [open, SetOpen] = useState(true);
-  const [search, setSearch] = useState(null)
-  const [openModal,SetOpenModal] = useState(false)
-
-  const {card} = useSelector((state)=>state.card)
-
   const navigate = useNavigate();
- 
-  
-   const handleShopping= ()=>{
-   console.log("Se ejecuto")
-   SetOpenModal(!openModal);
-  }
+  const [searchparams] = useSearchParams();
+  const searchvalue = searchparams.get("categoria");
 
+  const { card } = useSelector((state) => state.card);
+  const { userlocalStorage, handleLogout } = useAuth();
+  const {
+    isOpenProfileUser,
+    OpenProfileUser,
+    CloseProfileUser,
+    OpenMenuFilter,
+    OpenShoppingCard,
+  } = useContext(NavbarContext);
 
-  const handleSetOpen = () => {
-    SetOpen(false);
-    console.log("success");
-    
-  };
-  
-   const handleSearch = (e) => {
-    setSearch(e.target.value);   
+  const handleSearch = (e) => {
     navigate(`search?categoria=${e.target.value}`);
-   }
+  };
 
-   const handleHome =()=>{
-     navigate("/")
-   }
-
-   const handleLogin = () => {
-     navigate("/login");
-   };
+  const handleLogin = () => {
+    navigate("/login");
+  };
+  console.log("DEAFULT USENAVBAR");
 
   return {
+    isOpenProfileUser,
+    OpenProfileUser,
+    CloseProfileUser,
+    OpenMenuFilter,
+    OpenShoppingCard,
+    userlocalStorage,
+    handleLogout,
+    searchvalue,
     card,
-    search,
-    handleSetOpen,
     handleSearch,
-    handleShopping,
-    handleHome,
-    open,
-    SetOpen,
-    openModal,
     handleLogin,
   };
 };

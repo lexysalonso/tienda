@@ -1,3 +1,5 @@
+@use "../../styles/mixins" as mixin;
+
 :root {
   --black-a08: rgba(0, 0, 0, 0.08);
   --color-border-faint: var(--black-a08);
@@ -11,6 +13,7 @@
   background-color: rgb(109, 161, 238);
   box-shadow: var(--elevation-raised);
   border: none;
+  z-index: 997;
 }
 
 .container {
@@ -24,9 +27,8 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  
 }
-.GIhambuger{
+.GIhambuger {
   height: auto;
   width: 2rem;
 }
@@ -39,13 +41,13 @@
 .navbar__top form img {
   position: absolute;
   height: 60%;
-  top:10px;
+  top: 10px;
   right: 0px;
   padding: 0;
   margin: 0;
 }
 .navbar_input {
-  padding: 15px ;
+  padding: 15px;
   border: 0;
   border-radius: 2rem;
   width: 30vw;
@@ -60,7 +62,6 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  
 }
 .navbar__button {
   margin: auto 0;
@@ -68,26 +69,23 @@
   width: 3rem;
   background-color: transparent;
   border: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @include mixin.Flex($fd:column)
+ 
 }
-.navbar__button:hover{
+.navbar__button:hover {
   cursor: pointer;
 }
-.navbar__buttonlogo{
-   height: 3rem;
-   width: 4rem;
-   background-color: transparent;
-   border: none;
+.navbar__buttonlogo {
+  height: 3rem;
+  width: 4rem;
+  background-color: transparent;
+  border: none;
 }
 .navbar__img {
-   height: 100%;
-   width: 100%;
-   background-size: cover;
-   transform: scale(2)
-
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  transform: scale(2);
 }
 .navbar__ammout {
   width: 1.5rem;
@@ -96,10 +94,10 @@
   font-weight: bold;
   font-size: 1rem;
   border-radius: 50%;
-  margin-left:.5rem ;
+  margin-left: 0.5rem;
 }
 
-.FaCard{
+.FaCard {
   height: 100vh;
   width: 80%;
 }
@@ -115,7 +113,7 @@
   font-weight: bold;
 }
 
-.navbar__buttonloginandlogout  button {
+.navbar__buttonloginandlogout button {
   padding: 5px 20px;
   border-radius: 2rem;
   background-color: #000;
@@ -127,13 +125,63 @@
 }
 
 .navbar__buttonloginandlogout button:hover {
-  opacity: .5;
+  opacity: 0.5;
   cursor: pointer;
 }
 .list {
   text-decoration: none;
 }
-.navbar__user p{
- display: inline-block;
- color: red;
+.navbar__user p {
+  display: inline-block;
+  color: red;
+}
+
+.navbar__FaAngle {
+  width: 13px;
+  height: 13px;
+  object-fit: cover;
+}
+.navbar__profile {
+  position: fixed;
+  top: 3rem;
+  right: 13rem;
+  width: 10%;
+  height: 35%;
+  box-shadow: 2px 4px 14px 4px #0005;
+  z-index: 999;
+  background-color:#000;
+  border-radius: 0.7rem;
+  
+  
+}
+.navbar__profile__container{
+  @include mixin.Flex($fd: column);
+  width: 100%;
+  height: 100%;
+  text-align: center;
+
+}
+.navbarprofile_Encabezado{
+z-index: 997;
+width: 100%;
+padding:.5rem 0;
+background-color: rgb(109, 161, 238);
+background-clip: padding-box;
+border-top-left-radius: 0.5rem;
+border-top-right-radius: 0.5rem;
+text-align: center;
+color:#fff
+
+}
+.navbarprofile_item{
+  color: #fff;
+  text-decoration:none ;
+  padding: 5% 0;
+  width: 80%;
+  height: 100%;
+  border-bottom: 2px solid rgb(109, 161, 238);
+}
+.navbarprofile_item:hover{
+  color: rgb(109, 161, 238);
+  
 }

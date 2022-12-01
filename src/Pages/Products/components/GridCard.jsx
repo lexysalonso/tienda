@@ -10,7 +10,7 @@ const GridCard = () => {
  
 
   const {
-    productGrid,
+    products,
     isError,
     isLoading,
     isFetching,
@@ -50,8 +50,8 @@ const GridCard = () => {
       </div>
 
       <section className={style.grid}>
-        {productGrid && productGrid.length > 0
-          ? productGrid
+        {products && products.length > 0
+          ? products
               .filter((prod) =>
                 debouncedSearch
                   ? prod.category

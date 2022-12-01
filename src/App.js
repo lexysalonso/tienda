@@ -5,7 +5,7 @@ import LandingPages from "./Pages/LandingPages";
 //import { Login } from "./Pages";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //import GridCard from "./components/Products/GridCard";
-import PrivateRoute from "./routes/PrivateRoute";
+//import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
 //import Login from "./Pages/Login";
 //import DetailsProducts from "./Pages/DetailsProducts";
@@ -16,6 +16,7 @@ const DetailsProducts = React.lazy(() => import("./Pages/DetailsProducts"));
 const FilterProducts = React.lazy(() => import("./Pages/FilterProducts"));
 const Login = React.lazy(() => import("./Pages/Login"));
 const ProductsGrid = React.lazy(() => import("./Pages/Products"));
+const ShoppingUser = React.lazy(() => import("./Pages/ShoppingUserPayment"));
 
 function App() {
   return (
@@ -25,20 +26,20 @@ function App() {
           <Route path="/" element={<LandingPages />}>
             <Route index element={<ProductsGrid />} />
             <Route path="search" element={<ProductsGrid />} />
-            <Route path="/search/details/:id" element={<DetailsProducts />} />
-            <Route path="/filter/details/:id" element={<DetailsProducts />} />
+            <Route path="details/:id" element={<DetailsProducts />} />
+            <Route path="search/details/:id" element={<DetailsProducts />} />
+            <Route path="filter/details/:id" element={<DetailsProducts />} />
+            <Route path="filter" element={<FilterProducts />} />
 
+            <Route path="shoppinguser" element={<ShoppingUser />} />
             <Route
-              path="filter"
+              path="/login"
               element={
-                <PrivateRoute>
-                  <FilterProducts />
-                </PrivateRoute>
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
               }
             />
-
-            <Route path="/details/:id" element={<DetailsProducts />} />
-            <Route path="/login" element={<Login />} />
           </Route>
         </Routes>
       </Suspense>

@@ -1,41 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-import { useGetProductsQuery } from "../../../features/Products/productApi";
 import { Link } from "react-router-dom";
-import styles from "./details.module.css";
-import { addToCard } from "../../../features/ShoppingCard/shoppingCardSlice";
-import useAuth from "../../../hooks/useAuth";
-import Toast from "../../../components/Toast";
+import styles from "./details.module.scss";
+
+import useDetailsProduct from '../../../hooks/useDetailsProduct';
 
 const DetailsProductsComponent = () => {
-  const [disable,setDisable] = useState(null)
-  const { id } = useParams();
-  console.log("ver prodcuts iD", typeof id);
-
-  const { product } = useGetProductsQuery(undefined, {
-    selectFromResult: ({ data }) => ({
-      product: data?.find((product) => product.id === Number(id)),
-    }),
-  });
-
-  const dispatch = useDispatch();
-  const { userlocalStorage } = useAuth();
-
-  const handleAddtoCarrito = (product) => {
-     return disable
-       ? dispatch(addToCard(product))
-       : Toast.Toast_Info("Debes de authenticarte"); 
-     
-  };
-
-  useEffect(() => {
-    if (!userlocalStorage.user) {
-      setDisable(false);
-    } else {
-      setDisable(true);
-    }
-  }, [userlocalStorage.user]);
+   const { product, handleAddtoCard } = useDetailsProduct();
 
   return (
     <>
@@ -69,7 +38,7 @@ const DetailsProductsComponent = () => {
           <h1>{product?.title}</h1>
           <p> {product?.description}</p>
 
-          <button onClick={() => handleAddtoCarrito(product)}>
+          <button onClick={() => handleAddtoCard(product)}>
             Adicionar al Carrito
           </button>
           <Link className={styles.details_content_link} to="/">

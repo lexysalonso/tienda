@@ -16,7 +16,7 @@ const useShoppingCard = () => {
    const getTotalMony = () => card.reduce((acc, item) => acc += item.price * item.quantity, 0);
      
    ;
-   const handleSubmit = (item) => {
+   const handleAdd = (item) => {
      dispatch(addToCard(item));
    };
    const handleClaer = () => {
@@ -35,7 +35,7 @@ const useShoppingCard = () => {
   return {
     card,
     getTotalMony,
-    handleSubmit,
+    handleAdd,
     handleClaer,
     handleDelete,
   };

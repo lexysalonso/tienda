@@ -10,7 +10,8 @@
   justify-content: center;
   align-items: center;
   border-radius: 2rem;
-  box-shadow: 10px 10px 10px 10px #0007;
+   box-shadow: 10px 10px 10px 10px #0007;
+   box-shadow: 0 4px 6px 3px rgb(0 0 0 / 0.5), 7px 0px 4px -1px rgb(0 0 0 / 0.2);
 }
 
 .login_form > * {

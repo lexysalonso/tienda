@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./card.module.css";
+import style from "./card.module.scss";
 //import useCard from "../../hooks/useCard";
 import useProductsCard from "../../hooks/useProductsCard";
 

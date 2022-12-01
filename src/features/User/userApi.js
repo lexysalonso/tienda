@@ -1,13 +1,12 @@
 //import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { loginUser } from "./userSlice";
-import jwt_decode from "jwt-decode";
 import Storage from "../../hooks/Storage";
 import toast from "../../components/Toast";
 
 //const API = "https://fakestoreapi.com/";
 //const API = "https://fakestoreapi.com/";
-let API = process.env.REACT_APP_API; 
+let API = process.env.REACT_APP_API;
 //const API = "https://reqres.in/api/";
 
 const storage = Storage();
@@ -36,7 +35,7 @@ export const userApi = createApi({
           const { data } = await queryFulfilled;
           console.log("Sucess ok", data);
           storage.save(storage.Keys.auth, data?.token);
-          dispatch(loginUser(jwt_decode(data?.token)));
+          dispatch(loginUser());
           toast.Toast_Success("El usuario se logueado correctamente");
         } catch (error) {
           console.log("ver error login", error);
@@ -44,7 +43,12 @@ export const userApi = createApi({
         }
       },
     }),
+    getAllUser: builder.query({
+      query: () => ({
+        url: "/users",
+      }),
+    }),
   }),
 });
 
-export const { useUserLoginMutation } = userApi;
+export const { useUserLoginMutation, useLazyGetAllUserQuery } = userApi;
