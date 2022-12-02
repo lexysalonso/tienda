@@ -9,9 +9,9 @@ import { Navigate } from "react-router-dom";
  /* let userlocalStorage = storage.load(storage.Keys.auth)
     ? jwt_decode(storage.load(storage.Keys.auth))
     : { user: null }; */
-   const { userlocalStorage } = useAuth();
-  console.log("ver User Private", userlocalStorage);
-  return userlocalStorage?.user ? children : <Navigate to="/login" />;
+   const { user } = useAuth();
+  console.log("ver User Private", user);
+  return user ? children : <Navigate to="/login" />;
 };
 
 export default PrivateRoute;

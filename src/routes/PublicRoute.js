@@ -10,9 +10,9 @@ const PublicRoute = ({ children }) => {
     ? jwt_decode(storage.load(storage.Keys.auth))
     : { user: null }; */
   //  console.log("USER LOGUEE", userlocalStorage?)
-  const { userlocalStorage } = useAuth();
-  console.log("ver User public", userlocalStorage);
-  return userlocalStorage?.user ? <Navigate to="/" /> : children;
+  const { user } = useAuth();
+  console.log("ver User public", user);
+  return user ? <Navigate to="/" /> : children;
 };
 
 export default PublicRoute;

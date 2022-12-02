@@ -1,32 +1,32 @@
 
 
-export const filterss = (filters, product) => {
+export const filterss = (paramsprice,paramsrate, product) => {
   return product
     .filter((prod) =>
-      filters.price === undefined
+      paramsprice === null
         ? prod
-        : filters.price === "rango1"
+        : paramsprice === "rango1"
         ? prod.price > 0 && prod.price <= 50
-        : filters.price === "rango2"
+        : paramsprice === "rango2"
         ? prod.price > 51 && prod.price <= 100
-        : filters.price === "rango3"
+        : paramsprice === "rango3"
         ? prod.price > 101 && prod.price <= 1000
-        : filters.price === "All"
+        : paramsprice === "All"
         ? prod
         : null
     )
     .filter((prod) =>
-      filters.rate === undefined
+      paramsrate === null
         ? prod
-        : filters.rate === "excelente"
+        : paramsrate === "excelente"
         ? prod.rating.rate > 4
-        : filters.rate === "muybuena"
+        : paramsrate === "muybuena"
         ? prod.rating.rate >= 3 && prod.rating.rate <= 4
-        : filters.rate === "buena"
+        : paramsrate === "buena"
         ? prod.rating.rate > 1 && prod.rating.rate < 3
-        : filters.rate === "All"
+        : paramsrate === "All"
         ? prod
         : null
-    );
+    ); 
 };
 

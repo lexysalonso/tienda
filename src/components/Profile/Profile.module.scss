@@ -1,0 +1,57 @@
+@use "../../styles/mixins" as mixin;
+
+.navbar__profile {
+  position: fixed;
+  top: 3rem;
+  right: 13rem;
+  width: 10%;
+  height: 36vh;
+  box-shadow: 2px 4px 14px 4px #0005;
+  z-index: 999;
+  background-color: #000;
+  border-radius: 0.7rem;
+  overflow-y: auto;
+ 
+}
+.navbar__profile__container {
+  @include mixin.Flex($fd: column);
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: relative;
+  overflow-y: auto;
+}
+.navbarprofile_Encabezado {
+  position: absolute;
+  top: 0;
+  z-index: 997;
+  width: 100%;
+  padding: 0.5rem 0;
+  background-color: rgb(109, 161, 238);
+  background-clip: padding-box;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  text-align: center;
+  color: #fff;
+   
+}
+.navbarprofile_item {
+  width: 80%;
+  color: #fff;
+  text-decoration: none;
+  padding: 3px;
+  border-bottom: thick solid  rgb(109, 161, 238);
+}
+.navbarprofile_item:hover {
+  color: rgb(109, 161, 238);
+}
+.navbar__profile button{
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 3px;
+  color: #fff;
+  background-color: transparent;
+  border: 0;
+  border-bottom:thick solid  rgb(109, 161, 238); ;
+}

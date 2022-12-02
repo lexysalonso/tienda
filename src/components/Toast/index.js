@@ -11,7 +11,7 @@ let otpionsToast = {
   draggable: true,
   progress: undefined,
   theme: "light",
-  delay: 1000,
+  delay: 800,
 };
 
 const Toast_Success = (sms) =>

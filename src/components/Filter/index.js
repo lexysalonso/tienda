@@ -4,34 +4,38 @@ import { AiOutlineClose } from "react-icons/ai";
 import useFilter from "../../hooks/useFilter";
 import { prices, ratings } from "./data";
 
-const Filter = ({ menuFilter, SetCloseMenuFilter }) => {
-  const { data: categories, hanndlechange } = useFilter();
 
+const Filter = () => {
+ 
+  const { data: categories,isOpenMenuFilter,CloseMenuFilter, handleChange, handleClick } = useFilter();
+  console.log("FILTERRR");
   return (
     <article>
       <section
         className={
           style.navbar_menu +
           " " +
-          (menuFilter ? style.navbar__menuright : style.navbar__closemenu)
+          (isOpenMenuFilter ? style.navbar__menuright : style.navbar__closemenu)
         }
       >
         <AiOutlineClose
           className={style.navbar__close}
-          onClick={SetCloseMenuFilter}
+          onClick={CloseMenuFilter}
         ></AiOutlineClose>
         <form>
           <article className={style.navbar__menuselect__container}>
             <section className={style.navbar__menuselect__contain}>
               <article className={style.navbar__menuselect}>
-                <label htmlFor="selct">Categoria del Producto</label>
+                <label htmlFor="select">Categoria del Producto</label>
                 <select
                   name="categorie"
-                  onChange={hanndlechange}
+                  onChange={handleChange}
+                  onClick={handleClick}
                   className={style.input_data}
-                  id="selct"
+                  id="select"
+                  defaultValue={"DEFAULT"}
                 >
-                  <option disabled selected value>
+                  <option disabled selected>
                     Elija categoria
                   </option>
                   {categories &&
@@ -45,15 +49,17 @@ const Filter = ({ menuFilter, SetCloseMenuFilter }) => {
                 </select>
               </article>
               <article className={style.navbar__menuselect}>
-                <label htmlFor="selct">Precio del Producto</label>
+                <label htmlFor="selectprice">Precio del Producto</label>
                 <select
                   name="price"
-                  onChange={hanndlechange}
+                  onChange={handleChange}
+                  onClick={handleClick}
                   className={style.input_data}
-                  id="selct"
+                  id="selectprice"
                   placeholder="Elija el precio"
+                  defaultValue={"DEFAULT"}
                 >
-                  <option disabled selected value>
+                  <option disabled selected>
                     Elija Precio
                   </option>
                   {prices &&
@@ -67,15 +73,19 @@ const Filter = ({ menuFilter, SetCloseMenuFilter }) => {
                 </select>
               </article>
               <article className={style.navbar__menuselect}>
-                <label htmlFor="selct">Clasificación del Producto</label>
+                <label htmlFor="selectClasificacion">
+                  Clasificación del Producto
+                </label>
                 <select
                   name="rate"
-                  onChange={hanndlechange}
+                  onChange={handleChange}
+                  onClick={handleClick}
                   className={style.input_data}
-                  id="selct"
+                  id="selectClasificacion"
                   placeholder="Elija el precio"
+                  defaultValue={"DEFAULT"}
                 >
-                  <option disabled selected value>
+                  <option disabled selected>
                     Elija la Calidad
                   </option>
                   {ratings &&

@@ -1,3 +1,4 @@
+@use "../../styles/mixins" as mixin;
 
 img {
   max-width: 100%;
@@ -10,10 +11,7 @@ img {
   text-align: center;
   border-radius: 2rem;
   transition: transform 300ms ease-in-out;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include mixin.Flex($fd:column);
 }
 .article:hover {
   /* transform: translate(-20px,-15px);*/
@@ -22,7 +20,7 @@ img {
 }
 .article > img {
   box-shadow: #000;
-  object-fit: scale-down;
+  object-fit: contain;
   object-position: left, top;
   height: 200px;
   background: transparent;
@@ -46,7 +44,5 @@ img {
   color: #fff;
   cursor: pointer;
 }
-.prueba {
-  transform: scaleX(-1deg);
-}
+
 
