@@ -6,14 +6,20 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 import { ToastContainer} from "react-toastify";
+import {PersistGate} from "redux-persist/integration/react"
+import {persistStore} from "redux-persist"
+
+let persistor = persistStore(store)
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <Provider store={store}>
-    <ToastContainer ></ToastContainer>
-    <App />
-  </Provider>
+  <PersistGate persistor={persistor}>
+    <Provider store={store}>
+      <ToastContainer></ToastContainer>
+      <App />
+    </Provider>
+  </PersistGate>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -7,7 +7,7 @@ import useShoppingCard from "./useShoppingCard";
 
 
 const useDetailsProduct = () => {
-  const { userlocalStorage } = useAuth();
+  const { user } = useAuth();
   const { handleAdd } = useShoppingCard();
 
   const [disable, setDisable] = useState(null);
@@ -26,12 +26,12 @@ const useDetailsProduct = () => {
   };
 
   useEffect(() => {
-    if (!userlocalStorage.user) {
+    if (!user) {
       setDisable(false);
     } else {
       setDisable(true);
     }
-  }, [userlocalStorage.user]);
+  }, [user]);
 
   return {
     product,

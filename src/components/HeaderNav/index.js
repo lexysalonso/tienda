@@ -13,7 +13,7 @@ const HeaderNav = () => {
     const {
       card: cardCarrito,
       searchvalue,
-      userlocalStorage,
+      user,
       isOpenProfileUser,
       OpenProfileUser,
       CloseProfileUser,
@@ -39,7 +39,7 @@ const HeaderNav = () => {
           </Link>
         <form>
           <input
-            value={searchvalue}
+            value={searchvalue ? searchvalue:"" }
             type="text"
             placeholder="Buscar Productos"
             className={style.navbar_input}
@@ -59,10 +59,10 @@ const HeaderNav = () => {
           </button>
           <article className={style.navbar__user}>
             <div>
-              {userlocalStorage.user && (
+              {user && (
                 <div>
                   {" "}
-                  <cite>Bienvenido:</cite> <p>{userlocalStorage.user}</p>{" "}
+                  <cite>Bienvenido:</cite> <p>{user}</p>{" "}
                   <BsFillCaretDownFill
                     className={style.navbar__FaAngle}
                     onClick={
@@ -74,10 +74,10 @@ const HeaderNav = () => {
             </div>
           </article>
           <article className={style.navbar__buttonloginandlogout}>
-            {!userlocalStorage.user && (
+            {!user && (
               <button onClick={handleLogin}> Login</button>
             )}
-            {userlocalStorage.user && (
+            {user && (
               <button onClick={handleLogout}>Logout</button>
             )}
           </article>

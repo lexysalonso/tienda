@@ -10,7 +10,7 @@ const useNavbar = () => {
   const searchvalue = searchparams.get("categoria");
 
   const { card } = useSelector((state) => state.card);
-  const { userlocalStorage, handleLogout } = useAuth();
+  const {  user, handleLogout } = useAuth();
   const {
     isOpenProfileUser,
     OpenProfileUser,
@@ -34,7 +34,7 @@ const useNavbar = () => {
     CloseProfileUser,
     OpenMenuFilter,
     OpenShoppingCard,
-    userlocalStorage,
+    user,
     handleLogout,
     searchvalue,
     card,

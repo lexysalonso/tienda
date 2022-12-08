@@ -41,8 +41,6 @@
   padding: 4rem 1rem;
   margin: 1rem auto;
   border: 3px dashed #fff
-  
-   
 } 
 .navbar__menuselect select{
   background-image:url("../../../assest/images.png");
@@ -50,9 +48,6 @@
   background-position: 235px 10px;
   background-size: 10% ;
   object-fit: cover;
-  
- 
-   
 }
 .navbar__menuselect option {
   background-color: black;
