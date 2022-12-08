@@ -4,10 +4,16 @@ import { AiOutlineClose } from "react-icons/ai";
 import useFilter from "../../hooks/useFilter";
 import { prices, ratings } from "./data";
 
-
 const Filter = () => {
- 
-  const { data: categories,isOpenMenuFilter,CloseMenuFilter, handleChange, handleClick } = useFilter();
+  const {
+    data: categories,
+    isOpenMenuFilter,
+    CloseMenuFilter,
+    filters,
+    handleChange,
+    handleClick,
+    t,
+  } = useFilter();
   console.log("FILTERRR");
   return (
     <article>
@@ -26,30 +32,29 @@ const Filter = () => {
           <article className={style.navbar__menuselect__container}>
             <section className={style.navbar__menuselect__contain}>
               <article className={style.navbar__menuselect}>
-                <label htmlFor="select">Categoria del Producto</label>
+                <label htmlFor="select">{t("Filter.catProd")}</label>
                 <select
                   name="categorie"
                   onChange={handleChange}
                   onClick={handleClick}
                   className={style.input_data}
                   id="select"
-                  defaultValue={"DEFAULT"}
+                  defaultValue={filters?.categorie}
                 >
-                  <option disabled selected>
-                    Elija categoria
-                  </option>
+                  <option disabled>{t("Filter.selectOpCat")}</option>
+                  <option >ALL</option>
                   {categories &&
                     categories.map((item, index) => {
                       return (
                         <option value={item} key={index}>
-                          {item}
+                          {t(item)}
                         </option>
                       );
                     })}
                 </select>
               </article>
               <article className={style.navbar__menuselect}>
-                <label htmlFor="selectprice">Precio del Producto</label>
+                <label htmlFor="selectprice">{t("Filter.priceProduct")}</label>
                 <select
                   name="price"
                   onChange={handleChange}
@@ -57,16 +62,15 @@ const Filter = () => {
                   className={style.input_data}
                   id="selectprice"
                   placeholder="Elija el precio"
-                  defaultValue={"DEFAULT"}
+                  defaultValue={filters?.price}
                 >
-                  <option disabled selected>
-                    Elija Precio
-                  </option>
+                  <option disabled>{t("Filter.slelectOpPrice")}</option>
+
                   {prices &&
                     prices.map((item, index) => {
                       return (
                         <option value={item.id} key={index}>
-                          {item.price}
+                          {t(item.price)}
                         </option>
                       );
                     })}
@@ -74,7 +78,7 @@ const Filter = () => {
               </article>
               <article className={style.navbar__menuselect}>
                 <label htmlFor="selectClasificacion">
-                  Clasificación del Producto
+                  {t("Filter.clasifProd")}
                 </label>
                 <select
                   name="rate"
@@ -83,16 +87,14 @@ const Filter = () => {
                   className={style.input_data}
                   id="selectClasificacion"
                   placeholder="Elija el precio"
-                  defaultValue={"DEFAULT"}
+                  defaultValue={filters?.rate}
                 >
-                  <option disabled selected>
-                    Elija la Calidad
-                  </option>
+                  <option disabled>{t("Filter.selectOpClasif")}</option>
                   {ratings &&
                     ratings.map((item, index) => {
                       return (
                         <option value={item.value} key={index}>
-                          {item.rate}
+                          {t(item.rate)}
                         </option>
                       );
                     })}

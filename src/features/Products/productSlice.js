@@ -25,6 +25,11 @@ const ProductSlice = createSlice({
   
 })
 
+export const getProducts = (state) => state.product.product;
+
+export const getProductFilter = (state) => state.product.productFilter
+
+
 export const { addToProduct, addToProductFilter } = ProductSlice.actions;
 
 export default ProductSlice.reducer

@@ -11,6 +11,7 @@ import PublicRoute from "./routes/PublicRoute";
 //import DetailsProducts from "./Pages/DetailsProducts";
 //import FilterProducts from "./Pages/FilterProducts";
 import { Suspense } from "react";
+import Spinner from "./components/Spinner";
 
 const DetailsProducts = React.lazy(() => import("./Pages/DetailsProducts"));
 const FilterProducts = React.lazy(() => import("./Pages/FilterProducts"));
@@ -21,7 +22,7 @@ const ShoppingUser = React.lazy(() => import("./Pages/ShoppingUserPayment"));
 function App() {
   return (
     <Router>
-      <Suspense fallback={<>Caragando ......</>}>
+      <Suspense fallback={<Spinner/>}>
         <Routes>
           <Route path="/" element={<LandingPages />}>
             <Route index element={<ProductsGrid />} />

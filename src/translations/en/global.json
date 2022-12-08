@@ -1,0 +1,57 @@
+{
+  "header": {
+    "user_saludos": "Welcome:",
+    "placeholder_search": "Search Products",
+    "abrirSesion": "Sign in"
+  },
+  "login": {
+    "usuario": "username",
+    "contraseña": "password"
+  },
+  "productGrid": {
+    "title": "Varieties for you"
+  },
+  "Card": {
+    "Categoria": "Category:",
+    "Precio": "Price:",
+    "Cantidad": "Quantity:",
+    "Detalles": "Details"
+  },
+  "Filter": {
+    "catProd": " Product Category",
+    "selectOpCat": "Choose Category",
+    "priceProduct": "Price of the product",
+    "slelectOpPrice": "Choose price",
+    "clasifProd": " Product Classification",
+    "selectOpClasif": "Choose quality"
+  },
+  "Excelente": "Excellent",
+  "muybuena": "VeryGood",
+  "Buena": "Good",
+  "$ 1 hasta 50": "$ 1 to 50",
+  "$ 51 hasta 100": "$ 51 to 100",
+  "$ 101 hasta 1000": "$ 101 to 1000",
+
+  "Profile": {
+    "misCompras": "My shopping",
+    "cerrarSesion": "Logout",
+    "verPerfil": "View Profile"
+  },
+
+  "DetailsProducts": {
+    "caractProduct": "Product characteristics",
+    "addCarrito": "Add to Cart",
+    "regresar": "Return"
+  },
+  "FilterProducts": {
+    "noexisProd": "No existen datos para su busqueda"
+  },
+  "shoppingCard": {
+    "title": "You have in your cart:",
+    "precio": "Price",
+    "cantidad": "Quantity",
+    "totalPayment": "Total of your purchase",
+    "limpiarcompra": "Clean purchase",
+    "chequear": "Check"
+  }
+}

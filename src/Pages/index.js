@@ -4,5 +4,3 @@ export { default as LandingPages } from "./LandingPages/LandingPages";
 
 
 
-
-

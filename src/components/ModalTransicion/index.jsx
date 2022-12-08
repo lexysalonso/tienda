@@ -1,14 +1,14 @@
-import React,{useContext} from 'react'
+import React from "react";
 import Modal from "../Modal";
-import ShoppingCard from '../ShoppingCard';
+import ShoppingCard from "../ShoppingCard";
 import { CSSTransition } from "react-transition-group";
-import NavbarContext from '../../context/NavbarContext';
-import styletransicion from "./ModalTransicion.module.css";
 
+import styletransicion from "./ModalTransicion.module.css";
+import useNavbar from "../../hooks/useNabvar";
 
 const ModalTransicion = () => {
-  const { isOpenShoppingCard, } = useContext(NavbarContext); 
-  console.log("MODAL TRANSACTION")
+  const { isOpenShoppingCard } = useNavbar();
+  console.log("MODAL TRANSACTION");
   return (
     <div>
       <CSSTransition
@@ -23,6 +23,6 @@ const ModalTransicion = () => {
       </CSSTransition>
     </div>
   );
-}
+};
 
 export default ModalTransicion;

@@ -1,37 +1,32 @@
-import {createSlice} from "@reduxjs/toolkit"
-import Storage from '../../hooks/Storage';
-import  jwt_decode  from 'jwt-decode';
-let initialState={
-  loggee:false,
-  user:null
-}
-const storage = Storage()
+import { createSlice } from "@reduxjs/toolkit";
 
-const userSlice= createSlice({
-  name:"user",
+let initialState = {
+  loggee: false,
+  user: null,
+};
+
+const userSlice = createSlice({
+  name: "user",
   initialState,
-  reducers:{
-     loginUser(state,action){
-         let token = storage.load(storage.Keys.auth)
-         let user = jwt_decode(token)
-         console.log("ver TOKEN", user)
+  reducers: {
+    loginUser(state, action) {
+      return {
+        ...state,
+        loggee: true,
+        user: action.payload,
+      };
+    },
+    logoutUser(state, action) {
+      return {
+        ...state,
+        loggee: false,
+        user: null,
+      };
+    },
+  },
+});
 
-        return{
-          ...state,
-          loggee:true,
-          user:user.user
-        }
-     },
-     logoutUser(state,action){
-       return{
-         ...state,
-         loggee:false,
-         user:null
+export const getUser = (state) => state.user.user ?? "";
 
-       }
-     }
-  }
-})
-
-export const {loginUser, logoutUser} = userSlice.actions
+export const { loginUser, logoutUser } = userSlice.actions;
 export default userSlice.reducer;
