@@ -9,31 +9,29 @@ import useAuth from "./useAuth";
 
 const useShoppingCardPayment = () => {
   const [dataperfil, setDataPerfil] = useState([]);
-  const [user, setUser] = useState(null);
-  const { userlocalStorage } = useAuth();
+  const [userr, setUser] = useState(null);
+  const { user } = useAuth();
 
   const { data: productCache } = useSelector(getProductCache.select());
 
-  const [trigger, { data: productcard,isLoading }] = useLazyGetProductCardQuery();
+  const [trigger, { data: productcard, isLoading }] =
+    useLazyGetProductCardQuery();
 
   const [triggerUser, { data: productall }] = useLazyGetAllUserQuery();
 
   const getFindUser = useCallback(() => {
     console.log("VER PRODUCTALL", productall);
     setUser(
-      productall &&
-        productall.find((elem) => elem.username.includes(userlocalStorage.user))
+      productall && productall.find((elem) => elem.username.includes(user))
     );
-  }, [productall, userlocalStorage.user]);
+  }, [productall, user]);
 
-  console.log("verUser", userlocalStorage.user);
-  console.log("verUser ad", user);
+  console.log("verUser", user);
 
   useEffect(() => {
-    triggerUser().unwrap() 
-    getFindUser() 
-    user &&
-      trigger(user?.id).unwrap();
+    triggerUser().unwrap();
+    getFindUser();
+    userr && trigger(userr?.id).unwrap();
     productcard &&
       productCache &&
       setDataPerfil(getProductxID(productcard, productCache));
@@ -42,7 +40,7 @@ const useShoppingCardPayment = () => {
     getFindUser,
     triggerUser,
     productall,
-    user,
+    userr,
     productcard,
     productCache,
   ]);

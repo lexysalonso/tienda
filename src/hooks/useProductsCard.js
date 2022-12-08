@@ -4,8 +4,12 @@ import { useDebounce } from "./useDebounce";
 import { useSearchParams } from "react-router-dom";
 import { useGetProductsQuery } from "../features/Products/productApi";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 
 const useProductsCard = () => {
+  const [t,] = useTranslation("global")
+  
   const [productsexit, setNoProducts] = useState(true);
   const location = useLocation()
 
@@ -45,6 +49,7 @@ const useProductsCard = () => {
     productsexit,
     debouncedSearch,
     handleSendId,
+    t
   };
 };
 

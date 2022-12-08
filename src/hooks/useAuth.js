@@ -1,31 +1,31 @@
-import { useState, useEffect,useCallback } from "react";
+import { useState, useCallback } from "react";
 import { useUserLoginMutation } from "../features/User/userApi";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { logoutUser } from "../features/User/userSlice";
 import { useNavigate } from "react-router-dom";
-import Storage from "./Storage";
-import jwt_decode from "jwt-decode";
+import { useTranslation } from "react-i18next";
 
-
-const storage = Storage();
+import { getUser } from "../features/User/userSlice";
 
 const useAuth = () => {
+  const [t] = useTranslation("global");
   console.log("SE EJECUTO");
   const [form, SetForm] = useState({
     username: "",
     password: "",
   });
-  const [userlocalStorage, SetUser] = useState(storage.load(storage.Keys.auth)
+  /*  const [userlocalStorage, SetUser] = useState(
+    storage.load(storage.Keys.auth)
       ? jwt_decode(storage.load(storage.Keys.auth))
-      : { user: null });
+      : { user: null }
+  ); */
 
-   const state = useSelector((state) => state);
-   const { loggee, user } = state.user;     
- 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const { user } = useSelector(getUser);
+  console.log("ver user", user);
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [userLogin, { reset, error, isError, isLoading, isSuccess }] =
     useUserLoginMutation();
@@ -47,29 +47,28 @@ const useAuth = () => {
     [userLogin, navigate, form]
   );
 
-  const handleLogout =useCallback(() => {
-    console.log("dasdasd");
-    storage.remove(storage.Keys.auth);
+  const handleLogout = useCallback(() => {
     dispatch(logoutUser());
     navigate("/login");
-  },[dispatch,navigate]);
+  }, [dispatch, navigate]);
 
-  useEffect(() => {
-    SetUser(storage.load(storage.Keys.auth)
-      ? jwt_decode(storage.load(storage.Keys.auth))
-      : { user: null });
-  }, [navigate]);
-    
+  /*  useEffect(() => {
+    SetUser(
+      storage.load(storage.Keys.auth)
+        ? jwt_decode(storage.load(storage.Keys.auth))
+        : { user: null }
+    );
+  }, [navigate]); */
+
   return {
+    t,
     form,
     reset,
-    loggee,
     user,
     error,
     isError,
     isSuccess,
     isLoading,
-    userlocalStorage,
     SetForm,
     handlechange,
     handleSubmit,

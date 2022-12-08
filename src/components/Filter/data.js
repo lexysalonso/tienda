@@ -8,7 +8,7 @@ export const prices = [
  export const ratings = [
    { rate: "ALL", value: "All" },
    { rate: "Excelente", value: "excelente" },
-   { rate: "Muy Buena", value: "muybuena" },
+   { rate: "muybuena", value: "muybuena" },
    { rate: "Buena", value: "buena" },
  ]; ;
 

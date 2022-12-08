@@ -5,10 +5,7 @@ import Spinner from "../../../components/Spinner";
 import { Empyty } from "../../../components/Empyty";
 import useProductsCard from "../../../hooks/useProductsCard";
 
-
 const GridCard = () => {
- 
-
   const {
     products,
     isError,
@@ -16,9 +13,8 @@ const GridCard = () => {
     isFetching,
     productsexit,
     debouncedSearch,
+    t,
   } = useProductsCard();
-
- 
 
   if (!productsexit && debouncedSearch !== null) {
     return (
@@ -45,7 +41,7 @@ const GridCard = () => {
     <div className={style.container}>
       <div className={style.title}>
         <h1>
-          <cite>Variedades para ti</cite>
+          <cite>{t("productGrid.title")}</cite>
         </h1>
       </div>
 
@@ -60,7 +56,7 @@ const GridCard = () => {
                   : prod
               )
               .map((item, index) => <Card key={index} item={item}></Card>)
-          : "NO existe prodcutos para vender"}
+          : "NO existe productos para vender"}
       </section>
     </div>
   );

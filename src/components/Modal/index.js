@@ -1,10 +1,9 @@
-import React,{useContext} from "react";
+import React from "react";
 import styles from "./Modal.module.css";
-import NavbarContext from '../../context/NavbarContext';
-
+import useNavbar from "../../hooks/useNabvar";
 
 const Modal = ({ children }) => {
-  const { CloseShoppingCard } = useContext(NavbarContext);
+  const { CloseShoppingCard } = useNavbar();
   return (
     <article className={styles.shopping_content}>
       <section className={styles.container}>

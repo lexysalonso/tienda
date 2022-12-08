@@ -4,10 +4,11 @@ import { useGetProductsQuery } from "../features/Products/productApi";
 import useAuth from "./useAuth";
 import Toast from "../components/Toast";
 import useShoppingCard from "./useShoppingCard";
-
+import { useTranslation } from "react-i18next";
 
 const useDetailsProduct = () => {
-  const { userlocalStorage } = useAuth();
+  const [t] = useTranslation("global");
+  const { user } = useAuth();
   const { handleAdd } = useShoppingCard();
 
   const [disable, setDisable] = useState(null);
@@ -26,14 +27,15 @@ const useDetailsProduct = () => {
   };
 
   useEffect(() => {
-    if (!userlocalStorage.user) {
+    if (!user) {
       setDisable(false);
     } else {
       setDisable(true);
     }
-  }, [userlocalStorage.user]);
+  }, [user]);
 
   return {
+    t,
     product,
     handleAddtoCard,
   };
