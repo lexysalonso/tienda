@@ -1,6 +1,5 @@
 @use "../../styles/mixins" as mixin;
-@use "../../styles/placeholder" ;
-
+@use "../../styles/placeholder";
 
 .container {
   max-width: 1400px;
@@ -55,8 +54,7 @@
   width: 3rem;
   background-color: transparent;
   border: 0;
-  @include mixin.Flex($fd:column)
- 
+  @include mixin.Flex($fd: column);
 }
 .navbar__button:hover {
   cursor: pointer;
@@ -88,9 +86,8 @@
   width: 80%;
 }
 
-
 .navbar__buttonloginandlogout button {
-  @extend %button
+  @extend %button;
 }
 
 .navbar__buttonloginandlogout button:hover {
@@ -103,10 +100,18 @@
 .navbar__user p {
   display: inline-block;
   color: red;
+  font-weight: bold;
 }
-
+.Ingles {
+  display: inline-block;
+  color: red;
+}
 .navbar__FaAngle {
   width: 13px;
   height: 13px;
   object-fit: cover;
+}
+
+.switchheigth {
+  height: 1rem;
 }

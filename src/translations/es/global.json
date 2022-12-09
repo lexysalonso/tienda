@@ -1,0 +1,56 @@
+{
+  "header": {
+    "user_saludos": "Bienvenido:",
+    "placeholder_search": "Buscar Productos",
+    "abrirSesion": "Iniciar Sesión"
+  },
+  "login": {
+    "usuario": "usuario",
+    "contraseña": "contraseña"
+  },
+  "productGrid": {
+    "title": "Variedades para ty"
+  },
+  "Card": {
+    "Categoria": "Categoria:",
+    "Precio": "Precio:",
+    "Cantidad": "Cantidad:",
+    "Detalles": "Detalles"
+  },
+  "Filter": {
+    "catProd": "Categoria del Producto",
+    "selectOpCat": "Elija categoria",
+    "priceProduct": "Precio del Producto",
+    "slelectOpPrice": "Elija Precio",
+    "clasifProd": " Clasificación del Producto",
+    "selectOpClasif": " Elija la Calidad"
+  },
+  "Excelente": "Excelente",
+  "muybuena": "MuyBuena",
+  "Buena": "Buena",
+  "$ 1 hasta 50": "$ 1 hasta 50",
+  "$ 51 hasta 100": "$ 51 hasta 100",
+  "$ 101 hasta 1000": "$ 101 hasta 1000",
+
+  "Profile": {
+    "misCompras": "Mis Compras",
+    "cerrarSesion": "Cerrar Sesión",
+    "verPerfil": "Ver Perfil"
+  },
+  "DetailsProducts": {
+    "caractProduct": "Características del producto",
+    "addCarrito": "Adicionar al Carrito ",
+    "regresar": "Regresar"
+  },
+  "FilterProducts": {
+    "noexisProd": "No existen datos para su busqueda"
+  },
+  "shoppingCard": {
+    "title": "Usted Tiene en su Carrito:",
+    "precio": "Precio",
+    "cantidad": "Cantidad",
+    "totalPayment": "TOTAL ($) DE SU COMPRA",
+    "limpiarcompra": "Limpiar Compra",
+    "chequear": "Chequear"
+  }
+}

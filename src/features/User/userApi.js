@@ -1,7 +1,7 @@
 //import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { loginUser } from "./userSlice";
-//import Storage from "../../hooks/Storage";
+import Storage from "../../hooks/Storage";
 import toast from "../../components/Toast";
 import jwt_decode from "jwt-decode";
 
@@ -10,7 +10,7 @@ import jwt_decode from "jwt-decode";
 let API = process.env.REACT_APP_API;
 //const API = "https://reqres.in/api/";
 
-
+const storage = Storage();
 export const userApi = createApi({
   reducerPath: "User",
   baseQuery: fetchBaseQuery({ baseUrl: API }),
@@ -35,6 +35,7 @@ export const userApi = createApi({
           console.log("Sucess pending");
           const { data } = await queryFulfilled;
           console.log("Sucess ok", data);
+
           dispatch(loginUser(jwt_decode(data?.token)));
           toast.Toast_Success("El usuario se logueado correctamente");
         } catch (error) {

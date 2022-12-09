@@ -6,7 +6,7 @@ import { FaSpinner } from "react-icons/fa";
 //import Spinner from "../components/Spinner/Spinner";
 
 const Login = () => {
-  const { form, reset, error, isError, isLoading, handlechange, handleSubmit } =
+  const {t, form, reset, error, isError, isLoading, handlechange, handleSubmit } =
     useAuth();
    
   return (
@@ -20,7 +20,7 @@ const Login = () => {
             size={40}
           ></FaSpinner>
         )}
-        <strong className={styles.login_title}>My Shoping</strong>
+        <strong className={styles.login_title}>{ t("Profile.misCompras")}</strong>
         <form
           onSubmit={handleSubmit}
           className={styles.login_form}
@@ -39,7 +39,7 @@ const Login = () => {
             id="name"
           />
           <label htmlFor="name" className={styles.login_label}>
-            username
+            {t("login.usuario")}
           </label>
           <input
             type="password"
@@ -54,10 +54,10 @@ const Login = () => {
             id="paswword"
           />
           <label htmlFor="paswword" className={styles.password_label}>
-            password
+            {t("login.contraseña")}
           </label>
           <button onClick={reset} type="submit">
-            Login
+            {t("header.abrirSesion")}
           </button>
         </form>
       </div>

@@ -4,13 +4,13 @@ import styles from "./details.module.scss";
 import useDetailsProduct from '../../../hooks/useDetailsProduct';
 
 const DetailsProductsComponent = () => {
-   const { product, handleAddtoCard } = useDetailsProduct();
+   const {t, product, handleAddtoCard } = useDetailsProduct();
 
   return (
     <>
       <div className={styles.title}>
         <h1>
-          <cite>Características del producto</cite>
+          <cite>{t("DetailsProducts.caractProduct")}</cite>
         </h1>
       </div>
       <section className={styles.container}>
@@ -24,13 +24,13 @@ const DetailsProductsComponent = () => {
           </div>
           <aside className={styles.details_image_description}>
             <div>
-              <cite>Category:</cite> <p>{product?.category}</p>
+              <cite>{t("Card.Categoria")}</cite> <p>{product?.category}</p>
             </div>
             <div>
-              <cite>Precio:</cite> <p>${product?.price}</p>
+              <cite>{t("Card.Precio")}</cite> <p>${product?.price}</p>
             </div>
             <div>
-              <cite>Cantidad:</cite> <p>{product?.rating.count}</p>
+              <cite>{t("Card.Cantidad")}</cite> <p>{product?.rating.count}</p>
             </div>
           </aside>
         </article>
@@ -39,10 +39,10 @@ const DetailsProductsComponent = () => {
           <p> {product?.description}</p>
 
           <button onClick={() => handleAddtoCard(product)}>
-            Adicionar al Carrito
+            {t("DetailsProducts.addCarrito")}
           </button>
           <Link className={styles.details_content_link} to="/">
-            Regresar
+            {t("DetailsProducts.regresar")}
           </Link>
         </article>
       </section>

@@ -5,6 +5,8 @@ import { addToProductFilter } from "../features/Products/productSlice";
 import { useNavigate } from "react-router-dom";
 import { filterss } from "../helpers/filters";
 import { useSearchParams } from "react-router-dom";
+import { getProductFilter, getProducts } from "../features/Products/productSlice";
+
 
 const useDetailsFilter = () => {
   //const [filters, setFilters] = useState({});
@@ -17,31 +19,32 @@ const useDetailsFilter = () => {
   const navigate = useNavigate();
 
   console.log("ver params", paramscategorie, paramsprice, paramsrate);
-  const { productFilter } = useSelector((state) => state.product);
+  const  productFilter  = useSelector(getProductFilter);
 
-  const [product] = useState(
-    useSelector((state) => state.product.product)
-  );
+  const [product] = useState(useSelector(getProducts));
   console.log("VerProductssssssss", product);
 
   const [trigger, { data: filtercategorie, isLoading }] =
     useLazyGetCategoriexBYIDQuery({});
 
-  useEffect(() => {
-    paramscategorie &&
-      trigger(paramscategorie).unwrap() &&
-      filtercategorie &&
-      dispatch(addToProductFilter(filtercategorie));
-  }, [paramscategorie, trigger, dispatch, navigate, filtercategorie]);
+  console.log("ver includes", paramscategorie?.includes("ALL"));
 
   useEffect(() => {
-    paramscategorie &&
-      filtercategorie &&
-      dispatch(
-        addToProductFilter(filterss(paramsprice, paramsrate, filtercategorie))
-      );
+    paramscategorie && paramscategorie.includes("ALL")
+      ? dispatch(addToProductFilter(product))
+      : trigger(paramscategorie).unwrap() &&
+        filtercategorie &&
+        dispatch(addToProductFilter(filtercategorie));
+  }, [paramscategorie, product, trigger, dispatch, navigate, filtercategorie]);
+
+  useEffect(() => {
+    paramscategorie && paramscategorie.includes("ALL")
+      ? dispatch(addToProductFilter(filterss(paramsprice, paramsrate, product)))
+      : filtercategorie &&
+        dispatch(
+          addToProductFilter(filterss(paramsprice, paramsrate, filtercategorie))
+        );
     if (!paramscategorie && (paramsprice || paramsrate)) {
-      console.log("verr prodcuttt", product);
       dispatch(addToProductFilter(filterss(paramsprice, paramsrate, product)));
     }
   }, [

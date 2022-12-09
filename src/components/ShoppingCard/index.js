@@ -3,24 +3,18 @@ import React, { memo } from "react";
 import styles from "./shopping.module.scss";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { MdDeleteSweep } from "react-icons/md";
-import {MdAddShoppingCart} from "react-icons/md"
+import { MdAddShoppingCart } from "react-icons/md";
 import useShoppingCard from "../../hooks/useShoppingCard";
 
 const ShoppingCard = () => {
-  
   //const navigate = useNavigate()
-  const {
-    card,
-    getTotalMony,
-    handleAdd,
-    handleClaer,
-    handleDelete,
-  } = useShoppingCard();
-console.log("VER SHOPPING CARD", card);
+  const { t, card, getTotalMony, handleAdd, handleClaer, handleDelete } =
+    useShoppingCard();
+  console.log("VER SHOPPING CARD", card);
   return (
     <div className={styles.container}>
       <article>
-        <h1>Usted Tiene en su Carrito: </h1>
+        <h1>{t("shoppingCard.title")} </h1>
       </article>
       {card.length > 0
         ? card.map((item, index) => (
@@ -30,17 +24,17 @@ console.log("VER SHOPPING CARD", card);
                 <img src={item.image} alt="" />
               </article>
               <article>
-                <cite>price:</cite>
+                <cite>{t("shoppingCard.precio")}</cite>
                 <p>{item.price}</p>
               </article>
               <article>
-                <cite>Cantidad:</cite>
+                <cite>{t("shoppingCard.cantidad")}:</cite>
                 <p>{item.quantity}</p>
               </article>
               <article>
                 <MdAddShoppingCart
                   className={styles["icon_add"]}
-                  onClick={()=> handleAdd(item)}
+                  onClick={() => handleAdd(item)}
                 ></MdAddShoppingCart>
                 <RiDeleteBinFill
                   className={styles.icon}
@@ -55,12 +49,12 @@ console.log("VER SHOPPING CARD", card);
           ))
         : "No existen productos en el carrito"}
       <article>
-        <button onClick={handleClaer}>Limpiar Compra</button>
+        <button onClick={handleClaer}>{t("shoppingCard.limpiarcompra")}</button>
         <aside>
-          <cite>Total ($) de su compra:</cite>
+          <cite>{t("shoppingCard.totalPayment")}</cite>
           <p> {`${getTotalMony()} $`} </p>
         </aside>
-        <button onClick={handleClaer}>REVISAR</button>
+        <button onClick={handleClaer}>{t("shoppingCard.chequear")}</button>
       </article>
     </div>
   );

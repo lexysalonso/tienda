@@ -4,27 +4,26 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { logoutUser } from "../features/User/userSlice";
 import { useNavigate } from "react-router-dom";
-//import Storage from "./Storage";
-//import jwt_decode from "jwt-decode";
+import { useTranslation } from "react-i18next";
+
 import { getUser } from "../features/User/userSlice";
 
-
-
 const useAuth = () => {
+  const [t] = useTranslation("global");
   console.log("SE EJECUTO");
   const [form, SetForm] = useState({
     username: "",
     password: "",
   });
-  /* const [userlocalStorage, SetUser] = useState(
+  /*  const [userlocalStorage, SetUser] = useState(
     storage.load(storage.Keys.auth)
       ? jwt_decode(storage.load(storage.Keys.auth))
       : { user: null }
-  );
- */
-  const { user } = useSelector(getUser);
+  ); */
 
-  console.log("ver userss", user);
+  const { user } = useSelector(getUser);
+  console.log("ver user", user);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -49,12 +48,11 @@ const useAuth = () => {
   );
 
   const handleLogout = useCallback(() => {
-    console.log("dasdasd");
     dispatch(logoutUser());
     navigate("/login");
   }, [dispatch, navigate]);
 
-  /* useEffect(() => {
+  /*  useEffect(() => {
     SetUser(
       storage.load(storage.Keys.auth)
         ? jwt_decode(storage.load(storage.Keys.auth))
@@ -63,6 +61,7 @@ const useAuth = () => {
   }, [navigate]); */
 
   return {
+    t,
     form,
     reset,
     user,

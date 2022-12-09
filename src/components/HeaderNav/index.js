@@ -1,30 +1,34 @@
-import React from 'react'
+import React from "react";
 import useNavbar from "../../hooks/useNabvar";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
 import { BsFillCaretDownFill } from "react-icons/bs";
+
 import search from "../Navbar/search.svg";
 import style from "./HeaderNav.module.scss";
 import logo from "./Logo/Nutella-logo.svg";
+import Switch from "react-switch";
 
 const HeaderNav = () => {
-    
-    const {
-      card: cardCarrito,
-      searchvalue,
-      user,
-      isOpenProfileUser,
-      OpenProfileUser,
-      CloseProfileUser,
-      OpenMenuFilter,
-      OpenShoppingCard,
-      handleSearch,
-      handleLogout,
-      handleLogin,
-    } = useNavbar();
-  
-    console.log("HEADER NAVVV")
+  const {
+    card: cardCarrito,
+    searchvalue,
+
+    isOpenProfileUser,
+    OpenProfileUser,
+    CloseProfileUser,
+    OpenMenuFilter,
+    OpenShoppingCard,
+    handleSearch,
+    handleLogin,
+    handleCheckout,
+    checkout,
+    t,
+    user,
+  } = useNavbar();
+
+  console.log("HEADER NAVVV", user);
   return (
     <div className={style.container}>
       <section className={style.navbar__top}>
@@ -34,14 +38,14 @@ const HeaderNav = () => {
             className={style.GIhambuger}
           ></GiHamburgerMenu>
         </article>
-          <Link to="/" className={style.navbar__buttonlogo}>
-            <img className={style.navbar__img} src={logo} alt="car-img" />
-          </Link>
+        <Link to="/" className={style.navbar__buttonlogo}>
+          <img className={style.navbar__img} src={logo} alt="car-img" />
+        </Link>
         <form>
           <input
             value={searchvalue ? searchvalue:"" }
             type="text"
-            placeholder="Buscar Productos"
+            placeholder={t("header.placeholder_search")}
             className={style.navbar_input}
             onChange={handleSearch}
           />{" "}
@@ -57,12 +61,13 @@ const HeaderNav = () => {
             </div>
             <FaCartPlus className={style.FaCard} />
           </button>
+
           <article className={style.navbar__user}>
             <div>
               {user && (
                 <div>
                   {" "}
-                  <cite>Bienvenido:</cite> <p>{user}</p>{" "}
+                  <cite>{t("header.user_saludos")}</cite> <p>{user}</p>{" "}
                   <BsFillCaretDownFill
                     className={style.navbar__FaAngle}
                     onClick={
@@ -75,16 +80,22 @@ const HeaderNav = () => {
           </article>
           <article className={style.navbar__buttonloginandlogout}>
             {!user && (
-              <button onClick={handleLogin}> Login</button>
-            )}
-            {user && (
-              <button onClick={handleLogout}>Logout</button>
+              <button onClick={handleLogin}>{t("header.abrirSesion")}</button>
             )}
           </article>
+
+          <Switch
+            height={25}
+            width={50}
+            onChange={handleCheckout}
+            checked={checkout}
+          ></Switch>
+
+          <cite className={style.Ingles}>Inglés</cite>
         </article>
       </section>
     </div>
   );
-}
+};
 
 export default HeaderNav;

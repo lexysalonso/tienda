@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import toast from "../../components/Toast";
-import { addToProduct } from "./productSlice"; 
+import { addToProduct } from "./productSlice";
 
 let API = process.env.REACT_APP_API;
 //const API = "https://fakestoreapi.com/";
@@ -56,7 +56,7 @@ export const productsApi = createApi({
   }),
 });
 
-export const getProductCache = productsApi.endpoints.getProducts
+export const getProductCache = productsApi.endpoints.getProducts;
 
 export const {
   useGetProductsQuery,
@@ -65,6 +65,5 @@ export const {
   useGetCategoriexBYIDQuery,
   useLazyGetCategoriexBYIDQuery,
   useGetProductCardQuery,
-  useLazyGetProductCardQuery
-  
+  useLazyGetProductCardQuery,
 } = productsApi;
