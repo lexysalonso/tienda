@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { filterss } from "../helpers/filters";
 import { useSearchParams } from "react-router-dom";
 import { getProductFilter, getProducts } from "../features/Products/productSlice";
-
+import { useTranslation } from 'react-i18next';
 
 const useDetailsFilter = () => {
   //const [filters, setFilters] = useState({});
@@ -17,16 +17,14 @@ const useDetailsFilter = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  console.log("ver params", paramscategorie, paramsprice, paramsrate);
   const  productFilter  = useSelector(getProductFilter);
-
   const [product] = useState(useSelector(getProducts));
   console.log("VerProductssssssss", product);
 
   const [trigger, { data: filtercategorie, isLoading }] =
     useLazyGetCategoriexBYIDQuery({});
-
+  const [t,] = useTranslation("global")
+    
   console.log("ver includes", paramscategorie?.includes("ALL"));
 
   useEffect(() => {
@@ -57,6 +55,7 @@ const useDetailsFilter = () => {
   ]);
 
   return {
+    t,
     productFilter,
     isLoading,
   };

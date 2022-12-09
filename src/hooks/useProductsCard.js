@@ -25,8 +25,10 @@ const useProductsCard = () => {
     isError,
     isLoading,
     isFetching,
+    isSuccess,
   } = useGetProductsQuery();
 
+    
   useEffect(() => {
     products  && setNoProducts(
       products?.some((prod) =>
@@ -43,6 +45,7 @@ const useProductsCard = () => {
 
   return {
     products,
+    isSuccess,
     isError,
     isLoading,
     isFetching,

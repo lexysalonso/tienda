@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import toast from "../../components/Toast";
 import { addToProduct } from "./productSlice";
 
+
 let API = process.env.REACT_APP_API;
 //const API = "https://fakestoreapi.com/";
 //const API = "https://reqres.in/api/";
@@ -23,12 +24,10 @@ export const productsApi = createApi({
       providesTags: ["Products"],
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
-          console.log("Sucess pending prodcuts");
           const { data } = await queryFulfilled;
           console.log("SUCCESS OK RES", data);
           dispatch(addToProduct(data));
-          toast.Toast_Success("Los Productos se han cargado correctamente");
-        } catch (error) {
+          } catch (error) {
           toast.Toast_Error(error.error.error);
         }
       },

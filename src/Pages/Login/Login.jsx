@@ -4,10 +4,14 @@ import styles from "./login.module.css";
 import useAuth from "../../hooks/useAuth";
 import { FaSpinner } from "react-icons/fa";
 //import Spinner from "../components/Spinner/Spinner";
-
+import Toast from "../../components/Toast";
 const Login = () => {
-  const {t, form, reset, error, isError, isLoading, handlechange, handleSubmit } =
+  const {t, form, reset, error, isError, isLoading,isSuccess, handlechange, handleSubmit } =
     useAuth();
+  
+   if(isSuccess){
+     return Toast.Toast_Success(t("login.sms"));
+   } 
    
   return (
     <>

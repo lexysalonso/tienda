@@ -6,10 +6,12 @@
   },
   "login": {
     "usuario": "usuario",
-    "contraseña": "contraseña"
+    "contraseña": "contraseña",
+    "sms": "El usuario se ha logueado correctamente"
   },
   "productGrid": {
-    "title": "Variedades para ty"
+    "title": "Variedades para ty",
+    "sms":"Los Productos se han cargado correctamente"
   },
   "Card": {
     "Categoria": "Categoria:",
@@ -25,6 +27,10 @@
     "clasifProd": " Clasificación del Producto",
     "selectOpClasif": " Elija la Calidad"
   },
+  "filterProducts":{
+    "sms":"NO existen productos para su busqueda"
+  },
+
   "Excelente": "Excelente",
   "muybuena": "MuyBuena",
   "Buena": "Buena",

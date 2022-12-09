@@ -6,7 +6,7 @@ import useDetailsFilter from '../../../hooks/useDetailsFilter';
 
 const FilterProdcutsComponent = () => {
   
-   const { productFilter, isLoading } = useDetailsFilter();
+   const { productFilter, isLoading,t } = useDetailsFilter();
 
   console.log("VER FILTER PRODUCT", productFilter);
   if(isLoading) return <Spinner></Spinner>
@@ -15,7 +15,7 @@ const FilterProdcutsComponent = () => {
     <section className={style.container}>
       <div className={style.title}>
         <h1>
-          <cite>Variedades para ti</cite>
+          <cite>{t("productGrid.title")}</cite>
         </h1>
       </div>
       <article className={style.grid}>
@@ -23,7 +23,7 @@ const FilterProdcutsComponent = () => {
           productFilter.map((item, index) => <Card key={index} item={item} />)
         ) : (
           <div className={style.text_error}>
-            <p>No existen datos para su busqueda</p>
+            <p>{t("filterProducts.sms")}</p>
           </div>
         )}
       </article>

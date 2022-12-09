@@ -6,10 +6,15 @@
   },
   "login": {
     "usuario": "username",
-    "contraseña": "password"
+    "contraseña": "password",
+    "sms": "The user has successfully logged in"
   },
   "productGrid": {
-    "title": "Varieties for you"
+    "title": "Varieties for you",
+    "sms": "Products have been uploaded successfully"
+  },
+  "filterProducts": {
+    "sms": "There are no products for your search"
   },
   "Card": {
     "Categoria": "Category:",
