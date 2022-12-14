@@ -4,14 +4,13 @@ img {
   max-width: 100%;
 }
 .article {
-  width: 250px;
   height: 100%;
   border: thick solid #fff;
   background-color: #fff;
   text-align: center;
   border-radius: 2rem;
-  transition: transform 300ms ease-in-out;
-  @include mixin.Flex($fd:column);
+  transition: transform 300ms ease-in-out 500ms;
+  @include mixin.Flex($fd: column);
 }
 .article:hover {
   /* transform: translate(-20px,-15px);*/
@@ -24,7 +23,6 @@ img {
   object-position: left, top;
   height: 200px;
   background: transparent;
-  
 }
 
 /* .grid {
@@ -44,5 +42,3 @@ img {
   color: #fff;
   cursor: pointer;
 }
-
-
