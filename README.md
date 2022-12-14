@@ -4,13 +4,7 @@
 
 ## Problema con el token
 
-<<<<<<< HEAD
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).jksd
-
-=======
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).hg
->>>>>>> main
 
 ## Available Scripts
 
