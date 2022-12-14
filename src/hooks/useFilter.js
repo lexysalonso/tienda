@@ -9,7 +9,7 @@ const useFilter = () => {
   const [filters, setFilters] = useState(null);
   const navigate = useNavigate();
   const { isOpenMenuFilter, CloseMenuFilter } = useContext(NavbarContext);
-  const [t,] = useTranslation("global");
+  const [t] = useTranslation("global");
   const { data } = useGetCategoryQuery();
 
   const handleChange = (e) => {
@@ -18,6 +18,7 @@ const useFilter = () => {
       ...filters,
       [name]: value,
     });
+    CloseMenuFilter();
   };
 
   const handleClick = () => {

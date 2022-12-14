@@ -10,8 +10,8 @@
   justify-content: center;
   align-items: center;
   border-radius: 2rem;
-   box-shadow: 10px 10px 10px 10px #0007;
-   box-shadow: 0 4px 6px 3px rgb(0 0 0 / 0.5), 7px 0px 4px -1px rgb(0 0 0 / 0.2);
+  box-shadow: 10px 10px 10px 10px #0007;
+  box-shadow: 0 4px 6px 3px rgb(0 0 0 / 0.5), 7px 0px 4px -1px rgb(0 0 0 / 0.2);
 }
 
 .login_form > * {
@@ -32,50 +32,43 @@
   color: #fff;
 }
 
-
 /* .login_form input[required]::placeholder{
   color:  rgb(109, 161, 238);
   
 } */
 
-
 .login_label,
-.password_label{
+.password_label {
   color: rgb(109, 161, 238);
 }
 
-.login_form{
+.login_form {
   position: relative;
 }
-.login_label{
+.login_label {
   position: absolute;
-  top:10px;
+  top: 10px;
   left: 15px;
-  transition: transform .5s;
+  transition: transform 0.5s;
 }
 
-
-.login_input:not(:placeholder-shown) + .login_label  {
-  transform: translateY(-12px) scale(.7);
+.login_input:not(:placeholder-shown) + .login_label {
+  transform: translateY(-12px) scale(0.7);
   transform-origin: left top;
   color: rgb(109, 161, 238);
 }
 
-
-
-.password_label{
+.password_label {
   position: absolute;
-  top:77px;
+  top: 77px;
   left: 15px;
-  transition: transform .5s;
+  transition: transform 0.5s;
 }
-.login_input:not(:placeholder-shown) + .password_label  {
-  transform: translateY(-12px) scale(.7);
+.login_input:not(:placeholder-shown) + .password_label {
+  transform: translateY(-12px) scale(0.7);
   transform-origin: left top;
   color: rgb(109, 161, 238);
 }
-
-
 
 .login_title {
   font-weight: bold;
@@ -110,5 +103,14 @@
 @keyframes spinner {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 48em) {
+  .login {
+    width: 60%;
+  }
+  .login_form input:required {
+    width: 80%;
   }
 }

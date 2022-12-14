@@ -7,7 +7,8 @@
   "login": {
     "usuario": "username",
     "contraseña": "password",
-    "sms": "The user has successfully logged in"
+    "sms": "The user has successfully logged in",
+    "sms_auth": "You must authenticate yourself"
   },
   "productGrid": {
     "title": "Varieties for you",
