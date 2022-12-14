@@ -4,6 +4,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
 import { BsFillCaretDownFill } from "react-icons/bs";
+import { RiMenuFoldLine } from "react-icons/ri";
 
 import search from "../Navbar/search.svg";
 import style from "./HeaderNav.module.scss";
@@ -14,12 +15,13 @@ const HeaderNav = () => {
   const {
     card: cardCarrito,
     searchvalue,
-
     isOpenProfileUser,
     OpenProfileUser,
     CloseProfileUser,
     OpenMenuFilter,
     OpenShoppingCard,
+    openMenuMobile,
+    setOpenMenuMobile,
     handleSearch,
     handleLogin,
     handleCheckout,
@@ -43,7 +45,7 @@ const HeaderNav = () => {
         </Link>
         <form>
           <input
-            value={searchvalue ? searchvalue:"" }
+            value={searchvalue ? searchvalue : ""}
             type="text"
             placeholder={t("header.placeholder_search")}
             className={style.navbar_input}
@@ -53,15 +55,27 @@ const HeaderNav = () => {
             <img src={search} alt={search} />
           </div>
         </form>
-
-        <article className={style.navbar__menu}>
+        <RiMenuFoldLine
+          onClick={
+            !openMenuMobile
+              ? () => setOpenMenuMobile(true)
+              : () => setOpenMenuMobile(false)
+          }
+          className={style.GIhambugerMenu}
+        ></RiMenuFoldLine>
+        <article
+          className={
+            style.navbar__menu +
+            " " +
+            (openMenuMobile ? style.navbar__menuopen : "")
+          }
+        >
           <button className={style.navbar__button} onClick={OpenShoppingCard}>
             <div id="openModal" className={style.navbar__ammout}>
               {cardCarrito.length}
             </div>
             <FaCartPlus className={style.FaCard} />
           </button>
-
           <article className={style.navbar__user}>
             <div>
               {user && (
@@ -90,7 +104,6 @@ const HeaderNav = () => {
             onChange={handleCheckout}
             checked={checkout}
           ></Switch>
-
           <cite className={style.Ingles}>Inglés</cite>
         </article>
       </section>

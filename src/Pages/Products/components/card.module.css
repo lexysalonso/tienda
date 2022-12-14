@@ -1,6 +1,6 @@
 .title {
   margin: 0 auto;
-  width: 450px;
+  width: 35vw;
   background-color: #000;
   margin-bottom: 3rem;
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073,
@@ -20,14 +20,12 @@
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  
 }
 
 .grid {
   display: grid;
-  justify-content: space-between;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem 0;
 }
 /* .grid {
   display: flex;
@@ -37,7 +35,18 @@
  flex: 1 1 200px;
 } */
 
-
 .spinner {
   text-align: center;
+}
+
+@media screen and (max-width: 30em) {
+  .title {
+    width: 65vw;
+  }
+  .grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

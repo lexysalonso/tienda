@@ -22,9 +22,7 @@ const useDetailsProduct = () => {
   });
 
   const handleAddtoCard = (product) => {
-    return disable
-      ? handleAdd(product)
-      : Toast.Toast_Info("Debes de authenticarte.");
+    return disable ? handleAdd(product) : Toast.Toast_Info(t("login.sms_auth"));
   };
 
   useEffect(() => {

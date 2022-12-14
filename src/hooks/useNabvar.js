@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 
 const useNavbar = () => {
   const [checkout, setCheckout] = useState(false);
+  const [openMenuMobile, setOpenMenuMobile] = useState(false);
   const navigate = useNavigate();
   const [searchparams] = useSearchParams();
   const searchvalue = searchparams.get("categoria") ?? "";
@@ -55,6 +56,8 @@ const useNavbar = () => {
     OpenShoppingCard,
     isOpenShoppingCard,
     CloseShoppingCard,
+    openMenuMobile,
+    setOpenMenuMobile,
     user,
     handleLogout,
     searchvalue,

@@ -14,7 +14,7 @@
   pointer-events: none;
   opacity: 0;
   transform: translateY(6px);
-  transition: transform 500ms ease-in-out 500ms , opacity 500ms ease-in-out 100ms;
+  transition: transform 500ms ease-in-out 500ms, opacity 500ms ease-in-out 100ms;
 }
 .navbar__profileshow {
   pointer-events: auto;
@@ -71,4 +71,35 @@
   background-color: transparent;
   border: 0;
   border-bottom: thick solid rgb(109, 161, 238);
+}
+
+@media screen and (max-width: 48em) {
+  .navbar__profile {
+    position: absolute;
+    top: 4rem;
+    right: 15px;
+    width: 20%;
+  }
+  /*  .navbar__profile {
+    padding: 1rem;
+    position: absolute;
+    top: 5rem;
+    width: 20vw;
+    height: 200px;
+    background-color: transparent;
+    opacity: 1;
+    box-shadow: none;
+    transition: none;
+    overflow: hidden;
+    pointer-events: all;
+    z-index: 999;
+  }
+  .navbarprofile_Encabezado {
+    visibility: hidden;
+    background-color: transparent;
+  }
+
+  .navbar__profile button {
+    border: 0;
+  } */
 }
