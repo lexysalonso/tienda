@@ -1,3 +1,5 @@
+@use "../../../styles/mixins" as mixin;
+
 .title {
   margin: 0 auto;
   width: 450px;
@@ -32,14 +34,11 @@
   text-align: center;
   color: red;
 }
-@media screen and (max-width: 48em) {
+@media screen and (max-width: 30em) {
   .title {
     width: 65vw;
   }
   .grid {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include mixin.Flex($fd: column);
   }
 }

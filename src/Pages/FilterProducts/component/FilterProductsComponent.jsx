@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "../../../components/Card";
-import style from "./FilterProduct.module.css";
+import style from "./FilterProduct.module.scss";
 import Spinner from '../../../components/Spinner/index';
 import useDetailsFilter from '../../../hooks/useDetailsFilter';
 

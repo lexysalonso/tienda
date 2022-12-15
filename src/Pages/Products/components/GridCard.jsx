@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import style from "./card.module.css";
+import style from "./card.module.scss";
 import Card from "../../../components/Card";
 import Spinner from "../../../components/Spinner";
 import { Empyty } from "../../../components/Empyty";
