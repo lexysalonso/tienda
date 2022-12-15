@@ -39,6 +39,15 @@
   text-align: center;
 }
 
+@media screen and (max-width: 48em) {
+  .title {
+    width: 65vw;
+  }
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
 @media screen and (max-width: 30em) {
   .title {
     width: 65vw;
