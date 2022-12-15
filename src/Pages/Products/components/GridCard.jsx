@@ -1,10 +1,11 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import style from "./card.module.css";
 import Card from "../../../components/Card";
 import Spinner from "../../../components/Spinner";
 import { Empyty } from "../../../components/Empyty";
 import useProductsCard from "../../../hooks/useProductsCard";
 import Toast from "../../../components/Toast";
+
 const GridCard = () => {
   const {
     products,
@@ -19,7 +20,7 @@ const GridCard = () => {
 
   useEffect(() => {
     if (isSuccess) Toast.Toast_Success(t("productGrid.sms"));
-  }, [isSuccess,t]);
+  }, [isSuccess, t]);
 
   if (!productsexit && debouncedSearch !== null) {
     return (
