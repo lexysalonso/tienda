@@ -17,6 +17,9 @@ img {
   transform: scale(0.9);
   /*border-bottom: thick solid salmon;*/
 }
+.article p {
+  font-size: 1.3vw;
+}
 .article > img {
   box-shadow: #000;
   object-fit: contain;
@@ -34,7 +37,8 @@ img {
 } */
 
 .link {
-  width: 10rem;
+  width: 10vw;
+  font-size: 1.4vw;
   padding: 0.5rem;
   background-color: rgba(69, 101, 219, 0.829);
   border: 0;
